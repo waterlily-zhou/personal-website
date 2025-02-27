@@ -1,14 +1,27 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Line, Stars } from "@react-three/drei";
+import { OrbitControls, Line, Stars, Text } from "@react-three/drei";
 import { Vector3 } from "three";
 
 export default function ConstellationScene() {
-  // Convert arrays to Vector3 for proper typing
+  // Define star positions for Andromeda's six key stars
+  const starPositions = {
+    alpheratz: new Vector3(1.5, 2.5, 0.3),
+    δAndromedae: new Vector3(1, 1, 0.5),
+    mirach: new Vector3(-0.5, -0.5, 0.2),
+    almach: new Vector3(-3, -3, -1),
+    μAndromedae: new Vector3(-1, 0, 1.5),
+    vAndromedae: new Vector3(-2, 0.3, -3),
+  };
+
+  // Define connections between stars based on Andromeda constellation structure
   const lines = [
-    [new Vector3(-2, 0, 0), new Vector3(0, 2, 0)],
-    [new Vector3(0, 2, 0), new Vector3(2, -1, 0)],
-    [new Vector3(2, -1, 0), new Vector3(3, 1, 0)],
+    [starPositions.alpheratz, starPositions.δAndromedae],
+    [starPositions.δAndromedae, starPositions.mirach],
+    [starPositions.mirach, starPositions.almach],
+    [starPositions.mirach, starPositions.μAndromedae],
+    [starPositions.μAndromedae, starPositions.vAndromedae],
+    
   ];
 
   return (
@@ -35,36 +48,36 @@ export default function ConstellationScene() {
         speed={1} 
       />
       
+      {/* Draw connection lines */}
       {lines.map(([start, end], index) => (
         <Line 
           key={index} 
           points={[start, end]} 
           color="red" 
-          lineWidth={1} 
-          opacity={0.5} 
-          transparent 
+          lineWidth={1.5} 
+          opacity={0.5}
+          transparent
         />
       ))}
       
-      {/* Main bright star (corresponds to the blurred circle) */}
-      <mesh position={[0, 2, 0]}>
-        <sphereGeometry args={[0.15, 32, 32]} />
-        <meshBasicMaterial color="#ff4444" />
-      </mesh>
-      
-      {/* Other stars */}
-      <mesh position={[-2, 0, 0]}>
-        <sphereGeometry args={[0.08, 32, 32]} />
-        <meshBasicMaterial color="gold" />
-      </mesh>
-      <mesh position={[2, -1, 0]}>
-        <sphereGeometry args={[0.08, 32, 32]} />
-        <meshBasicMaterial color="white" />
-      </mesh>
-      <mesh position={[3, 1, 0]}>
-        <sphereGeometry args={[0.08, 32, 32]} />
-        <meshBasicMaterial color="white" />
-      </mesh>
+      {/* Draw the stars */}
+      {Object.entries(starPositions).map(([name, position], index) => (
+        <group key={index}>
+          <mesh position={position}>
+            <sphereGeometry args={[0.1, 32, 32]} />
+            <meshBasicMaterial color={name === 'alpheratz' ? '#ff4444' : 'white'} />
+          </mesh>
+          <Text
+            position={[position.x + 0.3, position.y + 0.3, position.z]}
+            fontSize={0.15}
+            color="white"
+            anchorX="left"
+            anchorY="middle"
+          >
+            {name}
+          </Text>
+        </group>
+      ))}
 
       {/* Add ambient light */}
       <ambientLight intensity={0.5} />

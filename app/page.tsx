@@ -64,10 +64,10 @@ export default function Home() {
       {/* First section with content */}
       <section ref={contentRef} className="min-h-screen relative">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-black-900/20 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/30 via-transparent to-black-900/20 -z-10" />
         
         {/* Main content */}
-        <div className="max-w-[1200px] mx-0 px-8 pt-8">
+        <div className="max-w-screen mx-0 px-8 pt-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Name */}
             <div className="space-y-2 md:col-span-2 md:border-r md:border-l md:border-gray-600 pl-4 pr-4">
@@ -160,22 +160,23 @@ export default function Home() {
         {/* Outer circle stroke */}
         <div 
           ref={circleRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
+          className="absolute top-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
         />
 
         {/* Blurred center circle */}
         <div 
           ref={blurredRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-red-500/90 blur-[80px]" 
+          className="absolute top-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px]" 
         />
       
-        {/* Constellation */}
-        {showConstellation && (
-          <div className="fixed inset-0 z-10 pointer-events-auto">
-            <ConstellationScene />
-          </div>
-        )}
       </section>
+
+      {/* Constellation */}
+      {showConstellation && (
+        <div className="fixed inset-0 z-10 pointer-events-auto">
+          <ConstellationScene />
+        </div>
+      )}
     </div>
   );
 }
