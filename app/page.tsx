@@ -145,7 +145,7 @@ export default function Home() {
 
         {/* Vertical text on right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400">
-          测系统，寻找两颗月亮之间的微妙关系。
+          遥远的探测系统，寻找两颗月亮之间的微妙关系。
           <br />
           互相排斥、平行时空？世人尝试解答，利用最先进的观测设备，
           <br />
