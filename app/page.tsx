@@ -64,7 +64,12 @@ export default function Home() {
       {/* First section with content */}
       <section ref={contentRef} className="min-h-screen relative">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/30 via-transparent to-black-900/20 -z-10" />
+        <div className="absolute inset-0 h-[170vh] -z-10">
+          {/* Main gradient: black -> blue -> black */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/20 to-black" />
+          {/* Additional blue glow in the middle */}
+         {/*  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/20 to-transparent" /> */}
+        </div>
         
         {/* Main content */}
         <div className="max-w-screen mx-0 px-8 pt-8">
@@ -151,7 +156,7 @@ export default function Home() {
         <div className="absolute bottom-8 left-8 text-sm text-gray-400">
           Scroll<br />
           to view<br />
-          the constellation
+          the menu
         </div>
       </section>
 
@@ -160,17 +165,17 @@ export default function Home() {
         {/* Outer circle stroke */}
         <div 
           ref={circleRef}
-          className="absolute top-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
         />
 
         {/* Blurred center circle */}
         <div 
           ref={blurredRef}
-          className="absolute top-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px]" 
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px]" 
         />
       
       </section>
-
+      
       {/* Constellation */}
       {showConstellation && (
         <div className="fixed inset-0 z-10 pointer-events-auto">
