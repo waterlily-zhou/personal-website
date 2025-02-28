@@ -3,25 +3,45 @@ import Link from 'next/link';
 
 export default function About() {
   return (
-    <div className="min-h-screen relative bg-black text-white">
+    <div className="min-h-screen relative text-white">
       {/* Navigation */}
-      <div className="absolute top-0 left-8 right-8 p-4 flex justify-between items-center">
-        <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
-          ← Back
+      <div className="absolute top-0 left-8 right-8 p-4 flex justify-between items-center z-50">
+        <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-1">
+          <svg 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            className="stroke-current"
+          >
+            <path 
+              d="M15 18l-6-6 6-6" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+          Back
         </Link>
-        <h1 className="mt-8 text-2xl font-light">
+        <h1 className="mt-8 text-2xl font-light text-right">
             About<br />Me
-          </h1>
+        </h1>
+      </div>
+
+      {/* Gradient Background */}
+      <div className="absolute inset-0 -z-10">
+        {/* Main gradient: black -> blue -> black */}
+        <div className="absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/20" />
       </div>
 
       {/* Background Circle Grid */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-30">
-        <div className="w-[800px] h-[800px] border-[0.5px] border-white/30 rounded-full">
+      <div className="absolute inset-0 flex items-center justify-center -z-5">
+        <div className="w-[800px] h-[800px] rounded-full bg-transparent">
           {/* Radial lines */}
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-[1000px] h-[0.5px] bg-white/100 origin-center"
+              className="absolute top-1/2 left-1/2 w-[1000px] h-[0.5px] bg-white/15 origin-center"
               style={{ transform: `translate(-50%, -50%) rotate(${i * 30}deg)` }}
             />
           ))}
@@ -29,7 +49,7 @@ export default function About() {
           {[300, 400, 700, 800, 1000].map((size, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 border-[0.5px] border-white/100 rounded-full"
+              className="absolute top-1/2 left-1/2 border-[0.5px] border-white/25 rounded-full bg-transparent"
               style={{
                 width: `${size}px`,
                 height: `${size}px`,
@@ -37,15 +57,6 @@ export default function About() {
               }}
             />
           ))}
-          {/* Center black circle */}
-          <div 
-            className="absolute top-1/2 left-1/2 bg-black rounded-full z-10"
-            style={{
-              width: '299px',
-              height: '299px',
-              transform: 'translate(-50%, -50%)'
-            }}
-          />
         </div>
       </div>
 
@@ -71,35 +82,17 @@ export default function About() {
         </div>
 
         {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-[30%] right-8 text-right">
-          <div className="mb-4 relative w-24 h-24">
-            {/* Four-pointed star */}
-            <div className="absolute inset-0">
-              <svg width="100%" height="100%" viewBox="-40 -40 80 80">
-                <path
-                  d="
-                    M0,0 L-2,-2 L0,-30 L2,-2 Z
-                    M0,0 L2,-2 L30,0 L2,2 Z
-                    M0,0 L2,2 L0,30 L-2,2 Z
-                    M0,0 L-2,2 L-30,0 L-2,-2 Z
-                  "
-                  fill="#FFA500"
-                  opacity="0.8"
-                  style={{ filter: 'drop-shadow(0 0 4px rgba(255, 165, 0, 0.5))' }}
-                />
-              </svg>
-            </div>
-            {/* Center circle with radial gradient */}
-            <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
-              style={{
-                background: 'radial-gradient(circle at center, white 0%, white 60%, transparent 100%)',
-                boxShadow: '0 0 10px rgba(255, 255, 255, 0.8)'
-              }}
+        <div className="absolute top-[20%] right-8 flex flex-col items-end gap-2">
+          <div className="relative h-30">
+            <img 
+              src="/blueStar.svg" 
+              alt="Decorative star"
+              className="w-full h-full"
+              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-sm text-white/100">
-            关于我的一些事情 ……
+          <div className="writing-vertical-rl text-sm text-white/100 h-48 pr-4">
+            关于我的一些事 ……
           </div>
         </div>
       </div>
