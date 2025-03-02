@@ -91,7 +91,7 @@ export default function About() {
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-sm text-white/100 h-48 pr-4">
+          <div className="writing-vertical-rl text-white h-48 pr-4">
             关于我的一些事 ……
           </div>
         </div>
