@@ -66,7 +66,7 @@ export default function Home() {
         {/* Gradient background */}
         <div className="absolute inset-0 h-[170vh] -z-10">
           {/* Main gradient: black -> blue -> black */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/20 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/25 to-black" />
           {/* Additional blue glow in the middle */}
          {/*  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/20 to-transparent" /> */}
         </div>

@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="min-h-screen relative text-white">
       {/* Navigation */}
-      <div className="absolute top-0 left-8 right-8 p-4 flex justify-between items-center z-50">
+      <div className="absolute top-8 left-8 right-8 p-4 flex justify-between items-start z-50">
         <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-1">
           <svg 
             width="16" 
@@ -23,7 +23,7 @@ export default function About() {
           </svg>
           Back
         </Link>
-        <h1 className="mt-8 text-2xl font-light text-right">
+        <h1 className="text-2xl font-light text-right">
             About<br />Me
         </h1>
       </div>
@@ -31,7 +31,7 @@ export default function About() {
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10">
         {/* Main gradient: black -> blue -> black */}
-        <div className="absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/20" />
+        <div className="absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/25" />
       </div>
 
       {/* Background Circle Grid */}

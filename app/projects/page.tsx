@@ -5,7 +5,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen relative text-white">
       {/* Navigation */}
-      <div className="absolute top-0 left-8 right-8 p-4 flex justify-between items-center z-50">
+      <div className="absolute top-8 left-8 right-8 p-4 flex justify-between items-start z-50">
         <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-1">
           <svg 
             width="16" 
@@ -23,25 +23,27 @@ export default function Projects() {
           </svg>
           Back
         </Link>
-        <h1 className="mt-8 text-2xl font-light text-right">
-          Projects<br />and<br />Writings
+        <h1 className="text-2xl font-light text-right">
+          Projects &<br />Writings
         </h1>
       </div>
 
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10">
         {/* Main gradient: black -> blue -> black */}
-        <div className="absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/20" />
+        <div className="absolute inset-0 min-h-[100vh] bg-gradient-to-b from-black to-blue-600/25" />
       </div>
 
       {/* Main Content */}
       <div className="pt-32 px-14 max-w-[80%]">
 
         {/* Red line */}
-        <div className="w-full h-[1px] bg-red-500/50 mb-8" />
+        <div className="w-full h-[1px] bg-red-700/70 mb-4" />
 
         {/* Projects Section */}
-        <div className="mb-16 flex flex-row items-start md:gap-[10%]">
+        <div className="mb-8 flex flex-row items-start md:gap-[10%]">
+
+          {/* Half moon and project title */}
           <div className="flex items-center -space-x-10">
             <img 
               src="/halfMoon.svg"
@@ -52,61 +54,68 @@ export default function Projects() {
             <h2 className="text-lg relative z-10 pt-6">Projects</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
             {/* Uncommons Website */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
-              <h3 className="mb-2">Uncommons Website</h3>
-              <p className="text-sm text-white/70 mb-4">
+            <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
+                <h3 className="mb-2">Uncommons Website</h3>
+                <p className="text-sm text-white/70 mb-4">
                 An intro page for the Uncommons Community
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Next.js</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Supabase</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Manbox</span>
+                </p>
+                <div className="flex gap-2 flex-wrap">
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Next.js</span>
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Supabase</span>
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Manbox</span>
+                </div>
               </div>
-            </div>
+            </a>
 
             {/* Birdy.ai */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
-              <h3 className="mb-2">Birdy.ai</h3>
-              <p className="text-sm text-white/70 mb-4">
-                Data dashboard for crypto and topic data on X
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">D3.js</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Observable</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">API.FY</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">OpenAI API</span>
+            <a href="https://github.com/kayyueth/birdy_ai" target="_blank" rel="noopener noreferrer">
+              <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
+                <h3 className="mb-2">Birdy.ai</h3>
+                <p className="text-sm text-white/70 mb-4">
+                  Data dashboard for crypto and topic data on X
+                </p>
+                <div className="flex gap-2 flex-wrap">
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">D3.js + Observable</span>
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">APIFY</span>
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">OpenAI API</span>
+                </div>
               </div>
-            </div>
+            </a>
 
             {/* Mel's Tarot House */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
-              <h3 className="mb-2">Mel&apos;s Tarot House</h3>
-              <p className="text-sm text-white/70 mb-4">
-                A 1-1 personal insight consultation service
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Smith-Waite</span>
+            <a href="https://melmelz.notion.site/KK-all-in-5da6ad0c27b141f3b167afaa5d83a73a?pvs=4" target="_blank" rel="noopener noreferrer">
+              <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
+                <h3 className="mb-2">Mel&apos;s Tarot House</h3>
+                <p className="text-sm text-white/70 mb-4">
+                  A 1-1 personal insight consultation service
+                </p>
+                <div className="flex gap-2 flex-wrap">
+                  <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Smith-Waite</span>
+                </div>
               </div>
-            </div>
+            </a>
 
             {/* Litentry */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
+            <a href="https://www.heima.network/rebranding" target="_blank" rel="noopener noreferrer">
+            <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
               <h3 className="mb-2">Litentry (employed)</h3>
               <p className="text-sm text-white/70 mb-4">
                 TEE-based decentralized identity solutions
               </p>
               <div className="flex gap-2 flex-wrap">
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">DevRel</span>
-                <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded">Marketing</span>
+                <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">DevRel</span>
+                <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Marketing</span>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
         {/* Red line */}
-        <div className="w-full h-[1px] bg-red-500/50 mb-8" />  
+        <div className="w-full h-[1px] bg-red-700/70 mb-4" />  
 
         {/* Writings Section */}
         <div className='flex flex-row items-start md:gap-[10%]'>
@@ -125,8 +134,8 @@ export default function Projects() {
             <h2 className="text-lg relative z-10 pt-6">Writings</h2>
           </div>
 
-          <div className="space-y-6 pt-12 w-full">
-            <a href="#" className="block group flex flex-row items-center gap-2">
+          <div className="pt-9 w-full">
+            <a href="https://medium.com/@melzhou" target="_blank" rel="noopener noreferrer" className="block group flex flex-row items-center gap-2 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
               <div className="flex items-center gap-2">
                 <svg 
                   width="16" 
@@ -142,15 +151,13 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white group-hover:text-white transition-colors">Medium</span>
+                <span className="text-white transition-colors">Medium</span>
               </div>
               <p className="text-white/70"> - Articles on identity and privacy technologies</p>
             </a>
 
-            {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50" />
 
-            <a href="#" className="block group flex flex-row items-center gap-2">
+            <a href="https://foresightnews.pro/column/detail/1154" target="_blank" rel="noopener noreferrer" className="block group flex flex-row items-center gap-2 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
               <div className="flex items-center gap-2">
                 <svg 
                   width="16" 
@@ -166,15 +173,13 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white group-hover:text-white transition-colors">Foresight News</span>
+                <span className="text-white transition-colors">Foresight News</span>
               </div>
               <p className="text-white/80">- Opinions and analysis on the social impact of Web3</p>
             </a>
 
-            {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50" />
 
-            <a href="#" className="block group flex flex-row items-center gap-2">
+            <a href="https://mp.weixin.qq.com/s/VL8auNw4IbvRF-6m3PSq_w" target="_blank" rel="noopener noreferrer"className="block group flex flex-row items-center gap-2 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
               <div className="flex items-center gap-2">
                 <svg 
                   width="16" 
@@ -190,13 +195,15 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white group-hover:text-white transition-colors">微信公众号</span>
+                <span className="text-white transition-colors">微信公众号</span>
               </div>
               <p className="text-white/80">- Reflections on understanding and navigating life</p>
+              {/* QR Code - initially hidden, shows on hover */}
+              <div className="absolute left-1/3 translate-y-1/2 mt-6 hidden group-hover:block rounded shadow-lg">
+                <img src="/qrcode.jpg" alt="WeChat QR Code" className="w-32 h-32" />
+              </div>
             </a>
 
-            {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50" />
           </div>
         </div>
 
