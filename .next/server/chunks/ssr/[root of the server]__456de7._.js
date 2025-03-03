@@ -26,7 +26,7 @@ function About() {
         className: "min-h-screen relative text-white",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-8 left-8 right-8 p-4 flex justify-between items-start z-50",
+                className: "absolute top-8 left-4 right-4 md:left-8 md:right-8 p-4 flex justify-between items-start z-50",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/",
@@ -87,21 +87,57 @@ function About() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-[20%] right-8 flex flex-col items-end gap-2",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative h-30",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: "/blueStar.svg",
+                            alt: "Decorative star",
+                            className: "w-full h-full",
+                            style: {
+                                filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/app/about/page.tsx",
+                            lineNumber: 34,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/about/page.tsx",
+                        lineNumber: 33,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "writing-vertical-rl text-white h-48 pr-4",
+                        children: "關於我的一些事…"
+                    }, void 0, false, {
+                        fileName: "[project]/app/about/page.tsx",
+                        lineNumber: 41,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/about/page.tsx",
+                lineNumber: 32,
+                columnNumber: 10
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 -z-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/25"
+                    className: "absolute inset-0 min-h-screen bg-gradient-to-b from-black to-blue-600/25"
                 }, void 0, false, {
                     fileName: "[project]/app/about/page.tsx",
-                    lineNumber: 34,
+                    lineNumber: 49,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 32,
+                lineNumber: 47,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 flex items-center justify-center -z-5",
+                className: "absolute inset-0 flex items-center justify-center -z-5 overflow-hidden",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "w-[800px] h-[800px] rounded-full bg-transparent",
                     children: [
@@ -114,7 +150,7 @@ function About() {
                                 }
                             }, i, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 42,
+                                lineNumber: 57,
                                 columnNumber: 13
                             }, this)),
                         [
@@ -132,95 +168,57 @@ function About() {
                                 }
                             }, i, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 50,
+                                lineNumber: 65,
                                 columnNumber: 13
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/about/page.tsx",
-                    lineNumber: 39,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 38,
+                lineNumber: 53,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "relative z-10 min-h-screen flex items-center",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-2xl mx-auto px-8",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "space-y-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-white/90 leading-relaxed",
-                                    children: "Mel (@waterily-zhou) is a full-stack engineer who enjoys building niche and elegant apps that seamlessly solve problems. Originally trained in law, she transitioned into software engineering through a bootcamp and currently working in Web3."
-                                }, void 0, false, {
-                                    fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 67,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-white/90 leading-relaxed",
-                                    children: 'In life, she has lived across multiple continents and is now based in Lisbon. She practices Vipassana meditation daily and connects with Chinese philosophy. This year, she follows the motto "潜龙勿用"—approaching work with equanimity and a learner\'s attitude.'
-                                }, void 0, false, {
-                                    fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 74,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/about/page.tsx",
-                            lineNumber: 66,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 65,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-[20%] right-8 flex flex-col items-end gap-2",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "max-w-2xl mx-auto px-8 pr-[20%] md:pr-0",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-8",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative h-30",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: "/blueStar.svg",
-                                    alt: "Decorative star",
-                                    className: "w-full h-full",
-                                    style: {
-                                        filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
-                                    }
-                                }, void 0, false, {
-                                    fileName: "[project]/app/about/page.tsx",
-                                    lineNumber: 87,
-                                    columnNumber: 13
-                                }, this)
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-white/90 leading-relaxed",
+                                children: "Mel (@waterily-zhou) is a full-stack engineer who enjoys building niche and elegant apps that seamlessly solve problems. Originally trained in law, she transitioned into software engineering through a bootcamp and currently working in Web3."
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 86,
-                                columnNumber: 11
+                                lineNumber: 82,
+                                columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "writing-vertical-rl text-white h-48 pr-4",
-                                children: "關於我的一些事…"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-white/90 leading-relaxed",
+                                children: 'In life, she has lived across multiple continents and is now based in Lisbon. She practices Vipassana meditation daily and connects with Chinese philosophy. This year, she follows the motto "潜龙勿用"—approaching work with equanimity and a learner\'s attitude.'
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.tsx",
-                                lineNumber: 94,
-                                columnNumber: 11
+                                lineNumber: 89,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/about/page.tsx",
-                        lineNumber: 85,
-                        columnNumber: 9
+                        lineNumber: 81,
+                        columnNumber: 11
                     }, this)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/app/about/page.tsx",
+                    lineNumber: 80,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/app/about/page.tsx",
-                lineNumber: 64,
+                lineNumber: 79,
                 columnNumber: 7
             }, this)
         ]

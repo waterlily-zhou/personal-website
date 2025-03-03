@@ -283,7 +283,12 @@ function ConstellationScene() {
                 0,
                 10
             ],
-            fov: 45
+            fov: 45,
+            rotation: [
+                -1,
+                -1.75,
+                0
+            ]
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["OrbitControls"], {
@@ -509,7 +514,7 @@ function Home() {
         };
     }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "relative",
+        className: "relative overflow-hidden",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 ref: contentRef,
@@ -530,12 +535,12 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-screen mx-0 px-8 pt-8",
+                        className: "max-w-[85%] md:max-w-screen mx-0 px-8 pt-8",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid grid-cols-1 md:grid-cols-12 gap-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "space-y-2 md:col-span-2 md:border-r md:border-l md:border-gray-600 pl-4 pr-4",
+                                    className: "space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-l md:border-gray-600 md:pl-4 pr-4",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                         className: "text-sm font-light text-gray-300",
                                         children: "waterily-zhou"
@@ -550,9 +555,9 @@ function Home() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "space-y-2 md:border-r sm:border-b border-gray-600 pr-4 md:col-span-3",
+                                    className: "space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:border-r md:border-gray-600 pr-4 md:col-span-3",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm leading-relaxed text-gray-300 pr-12",
+                                        className: "text-sm leading-relaxed text-gray-300 pr-[20%]",
                                         children: "A full-stack developer in Web3, focused on building user-friendly and scalable applications with high functionality and elegant interface aesthetics."
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
@@ -565,7 +570,7 @@ function Home() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "space-y-2 md:col-span-2 md:border-r md:border-gray-600 pr-4",
+                                    className: "space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-gray-600 pr-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "text-sm text-gray-300 font-light mb-4",
@@ -657,7 +662,7 @@ function Home() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "space-y-2 md:col-span-2 md:border-r md:border-gray-600 pr-4",
+                                    className: "space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-gray-600 pr-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "text-sm font-light text-gray-300 mb-4",
@@ -737,16 +742,8 @@ function Home() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400",
-                        children: [
-                            "對望遙遠的空間裡，寻找兩片銀河之间的微妙关系。",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/app/page.tsx",
-                                lineNumber: 149,
-                                columnNumber: 11
-                            }, this),
-                            "或互相吞噬、或平行时空。在世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。"
-                        ]
-                    }, void 0, true, {
+                        children: "250萬光年之外的螺旋星系，在遙遠的時空裡，一處比銀河更先進的文明。與銀河之间的微妙关系，作為最直接的鏡像，彼此對望和探訪，或互相吞噬、或平行时空。"
+                    }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
                         lineNumber: 147,
                         columnNumber: 9
@@ -784,7 +781,7 @@ function Home() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         ref: circleRef,
-                        className: "absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
+                        className: "absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50 overflow-hidden"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
                         lineNumber: 164,
@@ -792,7 +789,7 @@ function Home() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         ref: blurredRef,
-                        className: "absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px]"
+                        className: "absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px] overflow-hidden"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
                         lineNumber: 170,
@@ -805,7 +802,7 @@ function Home() {
                 columnNumber: 7
             }, this),
             showConstellation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 z-10 pointer-events-auto",
+                className: "fixed inset-0 z-10 pointer-events-auto w-screen h-screen",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ConstellationScene$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/page.tsx",
                     lineNumber: 180,

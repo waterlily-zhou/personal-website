@@ -190,7 +190,7 @@ export default function ConstellationScene() {
   return (
     <Canvas 
       className="absolute top-0 left-0 w-full h-full"
-      camera={{ position: [0, 0, 10], fov: 45 }}
+      camera={{ position: [0, 0, 10], fov: 45, rotation: [-1, -1.75, 0] }}
     >
       <OrbitControls 
         enableZoom={false}

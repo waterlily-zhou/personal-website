@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="min-h-screen relative text-white">
       {/* Navigation */}
-      <div className="absolute top-8 left-8 right-8 p-4 flex justify-between items-start z-50">
+      <div className="absolute top-8 left-4 right-4 md:left-8 md:right-8 p-4 flex justify-between items-start z-50">
         <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-1">
           <svg 
             width="16" 
@@ -28,14 +28,29 @@ export default function About() {
         </h1>
       </div>
 
+      {/* Decorative Star and Chinese Text */}
+         <div className="absolute top-[20%] right-8 flex flex-col items-end gap-2">
+          <div className="relative h-30">
+            <img 
+              src="/blueStar.svg" 
+              alt="Decorative star"
+              className="w-full h-full"
+              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
+            />
+          </div>
+          <div className="writing-vertical-rl text-white h-48 pr-4">
+            關於我的一些事…
+          </div>
+        </div>
+
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10">
         {/* Main gradient: black -> blue -> black */}
-        <div className="absolute inset-0 min-h-[110vh] bg-gradient-to-b from-black to-blue-600/25" />
+        <div className="absolute inset-0 min-h-screen bg-gradient-to-b from-black to-blue-600/25" />
       </div>
 
       {/* Background Circle Grid */}
-      <div className="absolute inset-0 flex items-center justify-center -z-5">
+      <div className="absolute inset-0 flex items-center justify-center -z-5 overflow-hidden">
         <div className="w-[800px] h-[800px] rounded-full bg-transparent">
           {/* Radial lines */}
           {[...Array(12)].map((_, i) => (
@@ -62,7 +77,7 @@ export default function About() {
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex items-center">
-        <div className="max-w-2xl mx-auto px-8">
+        <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
           <div className="space-y-8">
             <p className="text-white/90 leading-relaxed">
               Mel (@waterily-zhou) is a full-stack engineer who enjoys
@@ -78,21 +93,6 @@ export default function About() {
               follows the motto &quot;潜龙勿用&quot;—approaching work with
               equanimity and a learner&apos;s attitude.
             </p>
-          </div>
-        </div>
-
-        {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-[20%] right-8 flex flex-col items-end gap-2">
-          <div className="relative h-30">
-            <img 
-              src="/blueStar.svg" 
-              alt="Decorative star"
-              className="w-full h-full"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
-            />
-          </div>
-          <div className="writing-vertical-rl text-white h-48 pr-4">
-            關於我的一些事…
           </div>
         </div>
       </div>

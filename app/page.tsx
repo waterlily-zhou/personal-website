@@ -60,7 +60,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       {/* First section with content */}
       <section ref={contentRef} className="min-h-screen relative">
         {/* Gradient background */}
@@ -72,22 +72,22 @@ export default function Home() {
         </div>
         
         {/* Main content */}
-        <div className="max-w-screen mx-0 px-8 pt-8">
+        <div className="max-w-[85%] md:max-w-screen mx-0 px-8 pt-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Name */}
-            <div className="space-y-2 md:col-span-2 md:border-r md:border-l md:border-gray-600 pl-4 pr-4">
+            <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-l md:border-gray-600 md:pl-4 pr-4">
               <h1 className="text-sm font-light text-gray-300">waterily-zhou</h1>
             </div>
             {/* Introduction */}
-            <div className="space-y-2 md:border-r sm:border-b border-gray-600 pr-4 md:col-span-3">
-              <p className="text-sm leading-relaxed text-gray-300 pr-12">
+            <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:border-r md:border-gray-600 pr-4 md:col-span-3">
+              <p className="text-sm leading-relaxed text-gray-300 pr-[20%]">
                 A full-stack developer in Web3, focused on building user-friendly and scalable
                 applications with high functionality and elegant interface aesthetics.
               </p>
             </div>
 
             {/* Links */}
-            <div className="space-y-2 md:col-span-2 md:border-r md:border-gray-600 pr-4">
+            <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-gray-600 pr-4">
               <h2 className="text-sm text-gray-300 font-light mb-4">Links</h2>
               <ul className="text-sm space-y-2">
                 <li>
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
 
             {/* Tech Stack */}
-            <div className="space-y-2 md:col-span-2 md:border-r md:border-gray-600 pr-4">
+            <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-gray-600 pr-4">
               <h2 className="text-sm font-light text-gray-300 mb-4">Languages & Tech Stack</h2>
               <ul className="text-sm text-gray-300 space-y-2">
                 <li>JavaScript</li>
@@ -145,9 +145,9 @@ export default function Home() {
 
         {/* Vertical text on right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400">
-          對望遙遠的空間裡，寻找兩片銀河之间的微妙关系。
-          <br />
-          或互相吞噬、或平行时空。在世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。
+          250萬光年之外的螺旋星系，在遙遠的時空裡，一處比銀河更先進的文明。與銀河之间的微妙关系，作為最直接的鏡像，彼此對望和探訪，或互相吞噬、或平行时空。
+          {/* <br /> */}
+          
         </div>
 
         {/* Scroll indicator */}
@@ -163,20 +163,20 @@ export default function Home() {
         {/* Outer circle stroke */}
         <div 
           ref={circleRef}
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50"
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full border border-red-500/50 overflow-hidden"
         />
 
         {/* Blurred center circle */}
         <div 
           ref={blurredRef}
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px]" 
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px] overflow-hidden" 
         />
       
       </section>
       
       {/* Constellation */}
       {showConstellation && (
-        <div className="fixed inset-0 z-10 pointer-events-auto">
+        <div className="fixed inset-0 z-10 pointer-events-auto w-screen h-screen">
           <ConstellationScene />
         </div>
       )}
