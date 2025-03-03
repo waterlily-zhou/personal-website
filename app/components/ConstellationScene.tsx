@@ -197,7 +197,7 @@ export default function ConstellationScene() {
         enablePan={false}
         enableRotate={true}
         autoRotate={true}
-        autoRotateSpeed={0.2}
+        autoRotateSpeed={-0.2}
         rotateSpeed={0.5}
       />
       
@@ -238,35 +238,48 @@ export default function ConstellationScene() {
             isClickable={name === 'mirach' || name === 'alpheratz'}
           />
           <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
-            <Text
-              fontSize={name === 'mirach' || name === 'alpheratz' ? 0.15 : 0.1}
-              color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
-              anchorX="left"
-              anchorY="middle"
-              onClick={(e) => {
-                if (name === 'mirach') {
-                  e.stopPropagation();
-                  router.push('/about');
-                } else if (name === 'alpheratz') {
-                  e.stopPropagation();
-                  router.push('/projects');
-                }
-              }}
-              onPointerOver={(e) => {
-                if (name === 'mirach' || name === 'alpheratz') {
-                  e.stopPropagation();
-                  document.body.style.cursor = 'pointer';
-                }
-              }}
-              onPointerOut={(e) => {
-                if (name === 'mirach' || name === 'alpheratz') {
-                  e.stopPropagation();
-                  document.body.style.cursor = 'auto';
-                }
-              }}
-            >
-              {name}
-            </Text>
+            <group>
+              <Text
+                fontSize={name === 'mirach' || name === 'alpheratz' ? 0.15 : 0.09}
+                color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
+                anchorX="left"
+                anchorY="middle"
+                onClick={(e) => {
+                  if (name === 'mirach') {
+                    e.stopPropagation();
+                    router.push('/about');
+                  } else if (name === 'alpheratz') {
+                    e.stopPropagation();
+                    router.push('/projects');
+                  }
+                }}
+                onPointerOver={(e) => {
+                  if (name === 'mirach' || name === 'alpheratz') {
+                    e.stopPropagation();
+                    document.body.style.cursor = 'pointer';
+                  }
+                }}
+                onPointerOut={(e) => {
+                  if (name === 'mirach' || name === 'alpheratz') {
+                    e.stopPropagation();
+                    document.body.style.cursor = 'auto';
+                  }
+                }}
+              >
+                {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
+              </Text>
+              {(name === 'alpheratz' || name === 'mirach') && (
+                <Text
+                  position={[0, -0.2, 0]}
+                  fontSize={0.09}
+                  color="#666666"
+                  anchorX="left"
+                  anchorY="middle"
+                >
+                  {name}
+                </Text>
+              )}
+            </group>
           </Billboard>
         </group>
       ))}
