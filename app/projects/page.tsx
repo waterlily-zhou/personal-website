@@ -23,7 +23,7 @@ export default function Projects() {
           </svg>
           Back
         </Link>
-        <h1 className="text-2xl font-light text-right">
+        <h1 className="text-3xl text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
           Projects &<br />Writings
         </h1>
       </div>
@@ -51,14 +51,14 @@ export default function Projects() {
               className="w-24 h-24"
               style={{ filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))' }}
             />
-            <h2 className="text-lg relative z-10 pt-6">Projects</h2>
+            <h2 className="text-2xl relative z-10 pt-6">Projects</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
             {/* Uncommons Website */}
             <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
               <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
-                <h3 className="mb-2">Uncommons Website</h3>
+                <h3 className="mb-2 font-bold">Uncommons Website</h3>
                 <p className="text-sm text-white/70 mb-4">
                 An intro page for the Uncommons Community
                 </p>
@@ -73,7 +73,7 @@ export default function Projects() {
             {/* Birdy.ai */}
             <a href="https://github.com/kayyueth/birdy_ai" target="_blank" rel="noopener noreferrer">
               <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
-                <h3 className="mb-2">Birdy.ai</h3>
+                <h3 className="mb-2 font-bold">Birdy.ai</h3>
                 <p className="text-sm text-white/70 mb-4">
                   Data dashboard for crypto and topic data on X
                 </p>
@@ -88,7 +88,7 @@ export default function Projects() {
             {/* Mel's Tarot House */}
             <a href="https://melmelz.notion.site/KK-all-in-5da6ad0c27b141f3b167afaa5d83a73a?pvs=4" target="_blank" rel="noopener noreferrer">
               <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
-                <h3 className="mb-2">Mel&apos;s Tarot House</h3>
+                <h3 className="mb-2 font-bold">Mel&apos;s Tarot House</h3>
                 <p className="text-sm text-white/70 mb-4">
                   A 1-1 personal insight consultation service
                 </p>
@@ -101,7 +101,7 @@ export default function Projects() {
             {/* Litentry */}
             <a href="https://www.heima.network/rebranding" target="_blank" rel="noopener noreferrer">
             <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
-              <h3 className="mb-2">Litentry (employed)</h3>
+              <h3 className="mb-2 font-bold">Litentry (employed)</h3>
               <p className="text-sm text-white/70 mb-4">
                 TEE-based decentralized identity solutions
               </p>
@@ -131,7 +131,7 @@ export default function Projects() {
                 transform: 'rotate(180deg)'
               }}
             />
-            <h2 className="text-lg relative z-10 pt-6">Writings</h2>
+            <h2 className="text-2xl relative z-10 pt-6">Writings</h2>
           </div>
 
           <div className="pt-9 w-full">
@@ -151,7 +151,7 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white transition-colors">Medium</span>
+                <span className="text-white transition-colors font-bold">Medium</span>
               </div>
               <p className="text-white/70"> - Articles on identity and privacy technologies</p>
             </a>
@@ -173,7 +173,7 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white transition-colors">Foresight News</span>
+                <span className="text-white transition-colors font-bold">Foresight News</span>
               </div>
               <p className="text-white/80">- Opinions and analysis on the social impact of Web3</p>
             </a>
@@ -195,7 +195,7 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-white transition-colors">微信公众号</span>
+                <span className="text-white transition-colors font-bold">微信公众号</span>
               </div>
               <p className="text-white/80">- Reflections on understanding and navigating life</p>
               {/* QR Code - initially hidden, shows on hover */}
@@ -218,7 +218,7 @@ export default function Projects() {
             />
           </div>
           <div className="writing-vertical-rl text-white h-48 pr-4">
-            过往项目与写作
+            過往項目與文章
           </div>
         </div>
       </div>

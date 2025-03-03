@@ -23,7 +23,7 @@ export default function About() {
           </svg>
           Back
         </Link>
-        <h1 className="text-2xl font-light text-right">
+        <h1 className="text-3xl font-light text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
             About<br />Me
         </h1>
       </div>
@@ -92,7 +92,7 @@ export default function About() {
             />
           </div>
           <div className="writing-vertical-rl text-white h-48 pr-4">
-            关于我的一些事 ……
+            關於我的一些事…
           </div>
         </div>
       </div>
