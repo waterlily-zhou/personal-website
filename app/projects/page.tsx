@@ -42,21 +42,21 @@ export default function Projects() {
 
         {/* Projects Section */}
         <div className="mb-16 flex flex-row items-start md:gap-[10%]">
-          <div className="flex items-center gap-4 mb-8 px-4">
+          <div className="flex items-center -space-x-10">
             <img 
               src="/halfMoon.svg"
               alt="Half moon"
-              className="w-8 h-8"
+              className="w-24 h-24"
               style={{ filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))' }}
             />
-            <h2 className="text-lg">Projects</h2>
+            <h2 className="text-lg relative z-10 pt-6">Projects</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-5">
             {/* Uncommons Website */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors">
-              <h3 className="text-lg mb-2">Uncommons Website</h3>
-              <p className="text-white/70 mb-4">
+            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
+              <h3 className="mb-2">Uncommons Website</h3>
+              <p className="text-sm text-white/70 mb-4">
                 An intro page for the Uncommons Community
               </p>
               <div className="flex gap-2 flex-wrap">
@@ -67,9 +67,9 @@ export default function Projects() {
             </div>
 
             {/* Birdy.ai */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors">
-              <h3 className="text-lg mb-2">Birdy.ai</h3>
-              <p className="text-white/70 mb-4">
+            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
+              <h3 className="mb-2">Birdy.ai</h3>
+              <p className="text-sm text-white/70 mb-4">
                 Data dashboard for crypto and topic data on X
               </p>
               <div className="flex gap-2 flex-wrap">
@@ -81,9 +81,9 @@ export default function Projects() {
             </div>
 
             {/* Mel's Tarot House */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors">
-              <h3 className="text-lg mb-2">Mel&apos;s Tarot House</h3>
-              <p className="text-white/70 mb-4">
+            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
+              <h3 className="mb-2">Mel&apos;s Tarot House</h3>
+              <p className="text-sm text-white/70 mb-4">
                 A 1-1 personal insight consultation service
               </p>
               <div className="flex gap-2 flex-wrap">
@@ -92,9 +92,9 @@ export default function Projects() {
             </div>
 
             {/* Litentry */}
-            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors">
-              <h3 className="text-lg mb-2">Litentry (employed)</h3>
-              <p className="text-white/70 mb-4">
+            <div className="border border-white/10 rounded-lg p-6 hover:border-white/20 hover:bg-red-950/30 transition-all duration-300">
+              <h3 className="mb-2">Litentry (employed)</h3>
+              <p className="text-sm text-white/70 mb-4">
                 TEE-based decentralized identity solutions
               </p>
               <div className="flex gap-2 flex-wrap">
@@ -106,24 +106,26 @@ export default function Projects() {
         </div>
 
         {/* Red line */}
-        <div className="w-full h-[1px] bg-red-500/50 mb-16" />  
+        <div className="w-full h-[1px] bg-red-500/50 mb-8" />  
 
         {/* Writings Section */}
         <div className='flex flex-row items-start md:gap-[10%]'>
-          <div className="flex items-center gap-4 mb-8 px-4">
+
+          {/* Half moon and writing title*/}
+          <div className="flex items-center -space-x-6 px-2">
             <img 
               src="/halfMoon.svg"
               alt="Half moon"
-              className="w-8 h-8"
+              className="w-24 h-24"
               style={{ 
                 filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))',
                 transform: 'rotate(180deg)'
               }}
             />
-            <h2 className="text-lg">Writings</h2>
+            <h2 className="text-lg relative z-10 pt-6">Writings</h2>
           </div>
 
-          <div className="space-y-8 w-full">
+          <div className="space-y-6 pt-12 w-full">
             <a href="#" className="block group flex flex-row items-center gap-2">
               <div className="flex items-center gap-2">
                 <svg 
@@ -140,13 +142,13 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-lg text-white group-hover:text-white transition-colors">Medium</span>
+                <span className="text-white group-hover:text-white transition-colors">Medium</span>
               </div>
               <p className="text-white/70"> - Articles on identity and privacy technologies</p>
             </a>
 
             {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50 mb-8" />
+            <div className="w-full h-[1px] bg-gray-500/50" />
 
             <a href="#" className="block group flex flex-row items-center gap-2">
               <div className="flex items-center gap-2">
@@ -164,13 +166,13 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-lg text-white group-hover:text-white transition-colors">Foresight News</span>
+                <span className="text-white group-hover:text-white transition-colors">Foresight News</span>
               </div>
               <p className="text-white/80">- Opinions and analysis on the social impact of Web3</p>
             </a>
 
             {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50 mb-8" />
+            <div className="w-full h-[1px] bg-gray-500/50" />
 
             <a href="#" className="block group flex flex-row items-center gap-2">
               <div className="flex items-center gap-2">
@@ -188,13 +190,13 @@ export default function Projects() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-lg text-white group-hover:text-white transition-colors">微信公众号</span>
+                <span className="text-white group-hover:text-white transition-colors">微信公众号</span>
               </div>
               <p className="text-white/80">- Reflections on understanding and navigating life</p>
             </a>
 
             {/* Gray line */}
-            <div className="w-full h-[1px] bg-gray-500/50 mb-8" />
+            <div className="w-full h-[1px] bg-gray-500/50" />
           </div>
         </div>
 
