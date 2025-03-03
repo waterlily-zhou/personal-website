@@ -636,6 +636,11 @@ img, video {
   border-bottom-width: 1px;
 }
 
+.border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
+}
+
 .border-red-500\/50 {
   border-color: #ef444480;
 }
@@ -974,6 +979,12 @@ body {
 
 .group:hover .group-hover\:block {
   display: block;
+}
+
+@media (width >= 640px) {
+  .sm\:border-b {
+    border-bottom-width: 1px;
+  }
 }
 
 @media (width >= 768px) {

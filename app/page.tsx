@@ -79,7 +79,7 @@ export default function Home() {
               <h1 className="text-sm font-light text-gray-300">waterily-zhou</h1>
             </div>
             {/* Introduction */}
-            <div className="space-y-2 md:border-r md:border-gray-600 pr-4 md:col-span-3">
+            <div className="space-y-2 md:border-r sm:border-b border-gray-600 pr-4 md:col-span-3">
               <p className="text-sm leading-relaxed text-gray-300 pr-12">
                 A full-stack developer in Web3, focused on building user-friendly and scalable
                 applications with high functionality and elegant interface aesthetics.
@@ -145,9 +145,9 @@ export default function Home() {
 
         {/* Vertical text on right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400">
-          遥远的探测系统，寻找两颗月亮之间的微妙关系。
+          對望遙遠的空間裡，寻找兩片銀河之间的微妙关系。
           <br />
-          互相排斥、平行时空？世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。
+          或互相吞噬、或平行时空。在世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。
         </div>
 
         {/* Scroll indicator */}

@@ -547,7 +547,7 @@ function Home() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "space-y-2 md:border-r md:border-gray-600 pr-4 md:col-span-3",
+                                    className: "space-y-2 md:border-r sm:border-b border-gray-600 pr-4 md:col-span-3",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm leading-relaxed text-gray-300 pr-12",
                                         children: "A full-stack developer in Web3, focused on building user-friendly and scalable applications with high functionality and elegant interface aesthetics."
@@ -735,13 +735,13 @@ function Home() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400",
                         children: [
-                            "遥远的探测系统，寻找两颗月亮之间的微妙关系。",
+                            "對望遙遠的空間裡，寻找兩片銀河之间的微妙关系。",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
                                 lineNumber: 149,
                                 columnNumber: 11
                             }, this),
-                            "互相排斥、平行时空？世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。"
+                            "或互相吞噬、或平行时空。在世人尝试解答，利用最先进的观测设备，在浩瀚宇宙中，寻找两颗月亮之间的微妙关系。"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.tsx",
