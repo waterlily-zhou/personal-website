@@ -411,6 +411,10 @@ img, video {
   margin-bottom: 2rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .block {
   display: block;
 }
@@ -1068,6 +1072,10 @@ body {
 
   .md\:items-start {
     align-items: flex-start;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 
   .md\:border-b-0 {
