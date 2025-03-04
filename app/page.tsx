@@ -3,13 +3,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ConstellationScene from "./components/ConstellationScene";
-import StarField from "./components/StarField";
 
 export default function Home() {
   const circleRef = useRef(null);
   const blurredRef = useRef(null);
   const contentRef = useRef(null);
   const constellationRef = useRef(null);
+  const circleGridRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -90,6 +90,18 @@ export default function Home() {
       opacity: 0,
       duration: 1
     }, "<");
+
+    // Circle grid rotation animation
+    gsap.to(circleGridRef.current, {
+      scrollTrigger: {
+        trigger: ".about-section",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 5,
+      },
+      rotation: 180,
+      ease: "none",
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -188,8 +200,7 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-8 text-sm text-gray-400">
           Scroll<br />
-          to view<br />
-          the menu
+          to view
         </div>
       </section>
 
@@ -219,15 +230,15 @@ export default function Home() {
       {/* About section */}
       <section className="min-h-screen relative text-white about-section">
         {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-8 right-8 flex flex-col items-end gap-2">
+        <div className="absolute top-8 right-8 flex flex-col items-end">
           <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
               About<br />Me
             </h1>
-          <div className="relative h-30">
+          <div className="relative h-24 mr-[-20px]">
             <img 
               src="/blueStar.svg" 
               alt="Decorative star"
-              className="w-full h-full"
+              className="w-full h-full animate-breathe"
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
@@ -238,7 +249,10 @@ export default function Home() {
 
         {/* Background Circle Grid */}
         <div className="absolute inset-0 flex items-center justify-center -z-5">
-          <div className="w-[900px] h-[900px] rounded-full bg-transparent">
+          <div 
+            ref={circleGridRef}
+            className="w-[900px] h-[900px] rounded-full bg-transparent"
+          >
             {/* Radial lines */}
             {[...Array(12)].map((_, i) => (
               <div
@@ -294,19 +308,19 @@ export default function Home() {
       <section className="min-h-screen relative text-white projects-section">
 
         {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-8 right-8 flex flex-col items-end gap-2">
+        <div className="absolute top-8 right-8 flex flex-col items-end">
           <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
             Projects &<br />Writings 
           </h1>
-          <div className="relative h-30">
+          <div className="relative mr-[-20px]">
             <img 
               src="/orangeStar.svg" 
               alt="Decorative star"
-              className="w-full h-full"
+              className="w-full h-full animate-breathe"
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-white h-48 pr-4">
+          <div className="writing-vertical-rl text-white pr-4">
             過往項目與文章
           </div>
         </div>

@@ -380,14 +380,6 @@ img, video {
   display: none;
 }
 
-.pointer-events-none {
-  pointer-events: none;
-}
-
-.pointer-events-auto {
-  pointer-events: auto;
-}
-
 .fixed {
   position: fixed;
 }
@@ -460,12 +452,8 @@ img, video {
   top: 20%;
 }
 
-.top-16 {
-  top: 4rem;
-}
-
-.top-12 {
-  top: 3rem;
+.right-6 {
+  right: 1.5rem;
 }
 
 .-z-10 {
@@ -476,12 +464,12 @@ img, video {
   z-index: 10;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .z-20 {
   z-index: 20;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .mx-0 {
@@ -494,12 +482,12 @@ img, video {
   margin-right: auto;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .mb-2 {
   margin-bottom: .5rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .mb-4 {
@@ -510,12 +498,8 @@ img, video {
   margin-bottom: 2rem;
 }
 
-.mb-24 {
-  margin-bottom: 6rem;
-}
-
-.mb-32 {
-  margin-bottom: 8rem;
+.mr-\[-20px\] {
+  margin-right: -20px;
 }
 
 .block {
@@ -554,12 +538,20 @@ img, video {
   height: 1000px;
 }
 
+.h-\[100vh\] {
+  height: 100vh;
+}
+
 .h-\[170vh\] {
   height: 170vh;
 }
 
 .h-\[1px\] {
   height: 1px;
+}
+
+.h-\[200vh\] {
+  height: 200vh;
 }
 
 .h-\[350px\] {
@@ -570,32 +562,12 @@ img, video {
   height: 800px;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.h-\[700px\] {
-  height: 700px;
-}
-
-.h-\[600px\] {
-  height: 600px;
-}
-
 .h-\[900px\] {
   height: 900px;
 }
 
-.h-\[100vh\] {
-  height: 100vh;
-}
-
-.h-\[200vh\] {
-  height: 200vh;
+.h-full {
+  height: 100%;
 }
 
 .min-h-\[100vh\] {
@@ -622,6 +594,10 @@ img, video {
   width: 800px;
 }
 
+.w-\[900px\] {
+  width: 900px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -630,16 +606,12 @@ img, video {
   width: 100vw;
 }
 
-.w-\[700px\] {
-  width: 700px;
+.w-\[80\%\] {
+  width: 80%;
 }
 
-.w-\[600px\] {
-  width: 600px;
-}
-
-.w-\[900px\] {
-  width: 900px;
+.w-24 {
+  width: 6rem;
 }
 
 .min-w-\[100px\] {
@@ -683,10 +655,6 @@ img, video {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.resize {
-  resize: both;
 }
 
 .grid-cols-1 {
@@ -938,10 +906,6 @@ img, video {
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.pt-48 {
-  padding-top: 12rem;
 }
 
 .text-right {
@@ -1257,10 +1221,6 @@ body {
 
   .md\:pt-32 {
     padding-top: 8rem;
-  }
-
-  .md\:pt-40 {
-    padding-top: 10rem;
   }
 
   .md\:pt-8 {
