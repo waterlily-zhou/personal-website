@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ConstellationScene from "./components/ConstellationScene";
+import StarField from "./components/StarField";
 
 export default function Home() {
   const circleRef = useRef(null);
@@ -35,21 +36,23 @@ export default function Home() {
           start: "top 80%",
           end: "center center",
           scrub: 2,
+          pin: false,
         },
         opacity: 1,
       }
     );
 
-    // Constellation fade out animation
+/*     // Constellation fade out animation
     gsap.to(constellationRef.current, {
       scrollTrigger: {
         trigger: ".about-section",
-        start: "top 60%",
-        end: "center center",
+        start: "top 80%",
+        end: "top 20%",
         scrub: 2,
+        pin: false,
       },
       opacity: 0,
-    });
+    }); */
 
     // Projects section fade in animation
     gsap.fromTo(
@@ -58,8 +61,8 @@ export default function Home() {
       {
         scrollTrigger: {
           trigger: ".projects-section",
-          start: "top 80%",
-          end: "top 40%",
+          start: "top bottom",
+          end: "top center",
           scrub: 2,
         },
         opacity: 1,
@@ -204,21 +207,22 @@ export default function Home() {
           className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px] overflow-hidden animate-breathe" 
         />
       
+        {/* Constellation - moved inside scroll section */}
+        <div 
+          ref={constellationRef} 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[100vh]"
+        >
+          <ConstellationScene />
+        </div>
       </section>
       
-      {/* Constellation */}
-      <div 
-        ref={constellationRef} 
-        className="fixed inset-0 z-10 pointer-events-auto w-screen h-screen"
-        style={{ opacity: 0 }}
-      >
-        <ConstellationScene />
-      </div>
-
       {/* About section */}
       <section className="min-h-screen relative text-white about-section">
         {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-[20%] right-8 flex flex-col items-end gap-2">
+        <div className="absolute top-8 right-8 flex flex-col items-end gap-2">
+          <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
+              About<br />Me
+            </h1>
           <div className="relative h-30">
             <img 
               src="/blueStar.svg" 
@@ -227,24 +231,24 @@ export default function Home() {
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-white h-48 pr-4">
+          <div className="writing-vertical-rl text-white pr-4">
             關於我的一些事…
           </div>
         </div>
 
         {/* Background Circle Grid */}
         <div className="absolute inset-0 flex items-center justify-center -z-5">
-          <div className="w-[800px] h-[800px] rounded-full bg-transparent">
+          <div className="w-[900px] h-[900px] rounded-full bg-transparent">
             {/* Radial lines */}
             {[...Array(12)].map((_, i) => (
               <div
                 key={i}
-                className="absolute top-1/2 left-1/2 w-[1000px] h-[0.5px] bg-white/15 origin-center"
+                className="absolute top-1/2 left-1/2 w-[900px] h-[0.5px] bg-white/15 origin-center"
                 style={{ transform: `translate(-50%, -50%) rotate(${i * 30}deg)` }}
               />
             ))}
             {/* Concentric circles */}
-            {[300, 400, 700, 800, 1000].map((size, i) => (
+            {[300, 380, 600, 680, 901].map((size, i) => (
               <div
                 key={i}
                 className="absolute top-1/2 left-1/2 border-[0.5px] border-white/25 rounded-full bg-transparent"
@@ -261,9 +265,6 @@ export default function Home() {
         {/* Main Content */}
         <div className="relative z-10 min-h-screen flex items-center">
           <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
-            <h1 className="text-3xl font-light mb-12" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
-              About<br />Me
-            </h1>
             <div className="space-y-8">
               <p className="text-white/90 leading-relaxed">
                 Mel (@waterily-zhou) is a full-stack engineer who enjoys
@@ -284,10 +285,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gradient transition between About and Projects */}
+      <div className="absolute w-full h-[200vh] -z-10" style={{ top: '190vh' }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/25 to-black" />
+      </div>
+
       {/* Projects section */}
       <section className="min-h-screen relative text-white projects-section">
+
         {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-[20%] right-8 flex flex-col items-end gap-2">
+        <div className="absolute top-8 right-8 flex flex-col items-end gap-2">
+          <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
+            Projects &<br />Writings 
+          </h1>
           <div className="relative h-30">
             <img 
               src="/orangeStar.svg" 
@@ -302,14 +312,14 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <div className="pt-40 px-8 md:pt-32 md:px-14 md:max-w-[85%]">
+        <div className="pt-40 px-8 md:px-14 max-w-[85%] relative z-20">
           {/* Red line */}
           <div className="w-full h-[1px] bg-red-700/70 mb-4" />
 
           {/* Projects Section */}
           <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 lg:gap-16">
             {/* Half moon and project title */}
-            <div className="flex items-center -space-x-10 min-w-[150px]">
+            <div className="flex items-center -space-x-10 min-w-[150px] relative z-20">
               <img 
                 src="/halfMoon.svg"
                 alt="Half moon"
@@ -320,7 +330,7 @@ export default function Home() {
             </div>
             
             {/* Projects Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:pt-8 relative z-20">
               {/* Uncommons Website */}
               <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
@@ -384,7 +394,7 @@ export default function Home() {
           <div className="w-full h-[1px] bg-red-700/70 mb-8" />  
 
           {/* Writings Section */}
-          <div className='flex flex-col md:flex-row md:items-start gap-4 md:gap-8 lg:gap-16'>
+          <div className='flex flex-col md:flex-row md:items-start gap-4 md:gap-8 lg:gap-16 relative z-20'>
             {/* Half moon and writing title*/}
             <div className="flex items-center -space-x-10 min-w-[150px]">
               <img 
