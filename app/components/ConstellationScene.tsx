@@ -4,7 +4,8 @@ import { OrbitControls, Line, Stars, Text, shaderMaterial, Billboard } from "@re
 import { Vector3 } from "three";
 import { extend } from '@react-three/fiber';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 
 // Custom shader for radial gradient
 const StarMaterial = shaderMaterial(
@@ -46,7 +47,19 @@ interface StarProps {
 
 function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: StarProps) {
   const [hovered, setHovered] = useState(false);
+  const innerRef = useRef<THREE.Mesh>(null);
   
+  // Add breathing animation
+  useFrame((state) => {
+    if (innerRef.current) {
+      const t = state.clock.getElapsedTime();
+      // Create a smooth breathing effect using sin wave
+      const breathingScale = 1 + Math.sin(t * 2) * 0.1; // Adjust speed (2) and intensity (0.1) here
+      innerRef.current.scale.x = breathingScale;
+      innerRef.current.scale.y = breathingScale;
+    }
+  });
+
   // Convert hex color to RGB array
   const hexToRgb = (hex: string) => {
     const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -109,6 +122,7 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
               count={starPoints.length / 3}
               array={new Float32Array(starPoints)}
               itemSize={3}
+              args={[new Float32Array(starPoints), 3]}
             />
           </bufferGeometry>
           <meshBasicMaterial 
@@ -120,7 +134,7 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
         </mesh>
 
         {/* Central radial gradient (render second) */}
-        <mesh renderOrder={2}>
+        <mesh ref={innerRef} renderOrder={2}>
           <planeGeometry args={[0.15 * scale, 0.15 * scale]} />
           {/* @ts-expect-error Custom material */}
           <starMaterial 

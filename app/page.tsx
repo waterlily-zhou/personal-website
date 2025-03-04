@@ -130,14 +130,12 @@ export default function Home() {
 
             {/* Tech Stack */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-gray-600 pr-4">
-              <h2 className="text-sm font-light text-gray-300 mb-4">Languages & Tech Stack</h2>
+              <h2 className="text-sm font-light text-gray-300 mb-4">Main Tech Stack</h2>
               <ul className="text-sm text-gray-300 space-y-2">
-                <li>JavaScript</li>
-                <li>TypeScript</li>
                 <li>Next.js</li>
                 <li>React</li>
-                <li>Supabase</li>
-                <li>D3.js</li>
+                <li>Three.js</li>
+                <li>TypeScript</li>
               </ul>
             </div>
           </div>
@@ -145,7 +143,7 @@ export default function Home() {
 
         {/* Vertical text on right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400">
-          250萬光年之外的螺旋星系，在遙遠的時空裡，一處比銀河更先進的文明。與銀河之间的微妙关系，作為最直接的鏡像，彼此對望和探訪，或互相吞噬、或平行时空。
+          250萬光年之外的螺旋星系，孕育著比銀河更先進的文明。銀河與它，或彼此吞噬、或並行时空。兩者的微妙关系，如同最直接的鏡像，對望——在無數次朝聖中浮游問道。
           {/* <br /> */}
           
         </div>
@@ -169,7 +167,7 @@ export default function Home() {
         {/* Blurred center circle */}
         <div 
           ref={blurredRef}
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px] overflow-hidden" 
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-red-500/90 blur-[80px] overflow-hidden animate-breathe" 
         />
       
       </section>

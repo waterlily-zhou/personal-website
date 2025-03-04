@@ -71,5 +71,18 @@ body {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   font-family: 'HuayingMincho', sans-serif;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 5s ease-in-out infinite;
 }
