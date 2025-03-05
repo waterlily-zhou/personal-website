@@ -14,7 +14,8 @@ export const metadata: Metadata = {
         url: 'https://waterlilyzhou.xyz/images/og-square.png',
         width: 800,
         height: 800,
-        alt: 'waterlily-zhou'
+        alt: 'waterlily-zhou',
+        type: 'image/png'
       }
     ],
     locale: 'en_US',
