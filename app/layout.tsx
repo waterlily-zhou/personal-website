@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  other: {
+    'wechat-enable-sharing': 'true',
+    'wechat-image': 'https://waterlilyzhou.xyz/images/og-square.png',
+  },
   twitter: {
     card: 'summary',
     title: 'waterlily-zhou',
@@ -63,6 +67,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta property="wx:title" content="waterlily-zhou" />
+        <meta property="wx:description" content="个人网站" />
+        <meta property="wx:image" content="https://waterlilyzhou.xyz/images/og-square.png" />
+        <meta property="wx:enable_sharing" content="true" />
         <link
           rel="preload"
           href="/fonts/NeueMontreal/NeueMontreal-Regular.otf"
