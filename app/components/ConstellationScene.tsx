@@ -1,9 +1,8 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Stars, Text, shaderMaterial, Billboard } from "@react-three/drei";
-import { Vector3 } from "three";
+import { Vector3, Mesh } from "three";
 import { extend } from '@react-three/fiber';
-import { useRouter } from 'next/navigation';
 import { useState, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 
@@ -47,7 +46,7 @@ interface StarProps {
 
 function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: StarProps) {
   const [hovered, setHovered] = useState(false);
-  const innerRef = useRef<THREE.Mesh>(null);
+  const innerRef = useRef<Mesh>(null);
   
   // Add breathing animation
   useFrame((state) => {
@@ -150,8 +149,6 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
 }
 
 export default function ConstellationScene() {
-  const router = useRouter();
-  
   // Define star positions for Andromeda's six key stars
   const starPositions = {
     alpheratz: { 
@@ -247,8 +244,34 @@ export default function ConstellationScene() {
             color={color}
             pointColor={pointColor}
             scale={scale}
-            onClick={name === 'mirach' ? () => router.push('/about') : 
-                    name === 'alpheratz' ? () => router.push('/projects') : undefined}
+            onClick={name === 'mirach' ? 
+              () => {
+                const aboutSection = document.querySelector('.about-section');
+                if (aboutSection) {
+                  const rect = aboutSection.getBoundingClientRect();
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const targetPosition = scrollTop + rect.top - 50; // 50px offset from top
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              } : 
+              name === 'alpheratz' ? 
+              () => {
+                const projectsSection = document.querySelector('#projects-section');
+                if (projectsSection) {
+                  const rect = projectsSection.getBoundingClientRect();
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const targetPosition = scrollTop + rect.top - 50; // 50px offset from top
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              } : 
+              undefined
+            }
             isClickable={name === 'mirach' || name === 'alpheratz'}
           />
           <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
@@ -261,10 +284,28 @@ export default function ConstellationScene() {
                 onClick={(e) => {
                   if (name === 'mirach') {
                     e.stopPropagation();
-                    router.push('/about');
+                    const aboutSection = document.querySelector('.about-section');
+                    if (aboutSection) {
+                      const rect = aboutSection.getBoundingClientRect();
+                      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                      const targetPosition = scrollTop + rect.top - 50;
+                      window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                      });
+                    }
                   } else if (name === 'alpheratz') {
                     e.stopPropagation();
-                    router.push('/projects');
+                    const projectsSection = document.querySelector('#projects-section');
+                    if (projectsSection) {
+                      const rect = projectsSection.getBoundingClientRect();
+                      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                      const targetPosition = scrollTop + rect.top - 50;
+                      window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                      });
+                    }
                   }
                 }}
                 onPointerOver={(e) => {

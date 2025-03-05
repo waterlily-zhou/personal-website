@@ -54,6 +54,22 @@ export default function Home() {
       opacity: 0,
     }); */
 
+    // About-me section fade in animation
+    gsap.fromTo(
+      ".about-section",
+      { opacity: 0, y: 50 },
+      {
+        scrollTrigger: {
+          trigger: ".about-section",
+          start: "top bottom",
+          end: "top center",
+          scrub: 3,
+        },
+        opacity: 1,
+        y: 0,
+      }
+    );
+
     // Projects section fade in animation
     gsap.fromTo(
       ".projects-section",
@@ -228,18 +244,20 @@ export default function Home() {
       </section>
       
       {/* About section */}
-      <section className="min-h-screen relative text-white about-section">
+      <section className="min-h-screen relative text-white about-section mb-80 mt-40">
         {/* Decorative Star and Chinese Text */}
         <div className="absolute top-8 right-8 flex flex-col items-end">
           <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
               About<br />Me
             </h1>
-          <div className="relative h-24 mr-[-20px]">
+          <div className="relative h-24">
             <img 
               src="/blueStar.svg" 
               alt="Decorative star"
-              className="w-full h-full animate-breathe"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
+              className="w-full h-full"
+              style={{ 
+                filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
+              }}
             />
           </div>
           <div className="writing-vertical-rl text-white pr-4">
@@ -248,21 +266,21 @@ export default function Home() {
         </div>
 
         {/* Background Circle Grid */}
-        <div className="absolute inset-0 flex items-center justify-center -z-5">
+        <div className="absolute inset-0 flex justify-center -z-5">
           <div 
             ref={circleGridRef}
-            className="w-[900px] h-[900px] rounded-full bg-transparent"
+            className="w-[1000px] h-[1000px] rounded-full bg-transparent"
           >
             {/* Radial lines */}
             {[...Array(12)].map((_, i) => (
               <div
                 key={i}
-                className="absolute top-1/2 left-1/2 w-[900px] h-[0.5px] bg-white/15 origin-center"
+                className="absolute top-1/2 left-1/2 w-[1200px] h-[0.5px] bg-white/15 origin-center"
                 style={{ transform: `translate(-50%, -50%) rotate(${i * 30}deg)` }}
               />
             ))}
             {/* Concentric circles */}
-            {[300, 380, 600, 680, 901].map((size, i) => (
+            {[300, 450, 700, 850, 1201].map((size, i) => (
               <div
                 key={i}
                 className="absolute top-1/2 left-1/2 border-[0.5px] border-white/25 rounded-full bg-transparent"
@@ -300,51 +318,51 @@ export default function Home() {
       </section>
 
       {/* Gradient transition between About and Projects */}
-      <div className="absolute w-full h-[200vh] -z-10" style={{ top: '190vh' }}>
+      <div className="absolute w-full h-[300vh] -z-10" style={{ top: '190vh' }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/25 to-black" />
       </div>
 
       {/* Projects section */}
-      <section className="min-h-screen relative text-white projects-section">
+      <section id="projects-section" className="min-h-screen relative text-white projects-section">
 
         {/* Decorative Star and Chinese Text */}
         <div className="absolute top-8 right-8 flex flex-col items-end">
           <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
             Projects &<br />Writings 
           </h1>
-          <div className="relative mr-[-20px]">
+          <div className="relative hidden md:block">
             <img 
               src="/orangeStar.svg" 
               alt="Decorative star"
-              className="w-full h-full animate-breathe"
+              className="w-full h-full"
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-white pr-4">
+          <div className="writing-vertical-rl text-white pr-4 hidden md:block">
             過往項目與文章
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="pt-40 px-8 md:px-14 max-w-[85%] relative z-20">
+        <div className="pt-28 px-8 md:px-14 md:max-w-[85%] relative z-20">
           {/* Red line */}
-          <div className="w-full h-[1px] bg-red-700/70 mb-4" />
+          <div className="w-full h-[1px] bg-red-700/70 mb-16" />
 
           {/* Projects Section */}
-          <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 lg:gap-16">
+          <div className="mb-20 flex flex-col md:flex-row md:items-start gap-8 lg:gap-16">
             {/* Half moon and project title */}
             <div className="flex items-center -space-x-10 min-w-[150px] relative z-20">
-              <img 
+{/*               <img 
                 src="/halfMoon.svg"
                 alt="Half moon"
                 className="w-18 h-24"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))' }}
-              />
-              <h2 className="text-2xl relative z-10 pt-14">Projects</h2>
+              /> */}
+              <h2 className="text-2xl relative z-10 text-gray-300">Projects</h2>
             </div>
             
             {/* Projects Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:pt-8 relative z-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
               {/* Uncommons Website */}
               <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
@@ -405,13 +423,13 @@ export default function Home() {
           </div>
 
           {/* Red line */}
-          <div className="w-full h-[1px] bg-red-700/70 mb-8" />  
+          <div className="w-full h-[1px] bg-red-700/70 mb-16" />  
 
           {/* Writings Section */}
           <div className='flex flex-col md:flex-row md:items-start gap-4 md:gap-8 lg:gap-16 relative z-20'>
             {/* Half moon and writing title*/}
             <div className="flex items-center -space-x-10 min-w-[150px]">
-              <img 
+{/*               <img 
                 src="/halfMoon.svg"
                 alt="Half moon"
                 className="w-18 h-24"
@@ -419,11 +437,11 @@ export default function Home() {
                   filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))',
                   transform: 'rotate(180deg)'
                 }}
-              />
-              <h2 className="text-2xl relative z-10 pt-6">Writings</h2>
+              /> */}
+              <h2 className="text-2xl relative z-10 text-gray-300">Writings</h2>
             </div>
 
-            <div className="pt-2 md:pt-9 w-full">
+            <div className="w-full">
               <a href="https://medium.com/@melzhou" target="_blank" rel="noopener noreferrer" className="block group flex flex-row items-center gap-4 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
                 <div className="flex items-center gap-2">
                   <svg 
@@ -486,9 +504,9 @@ export default function Home() {
                 </div>
                 <p className="text-white/80">Reflections on understanding and navigating life</p>
                 {/* QR Code - initially hidden, shows on hover */}
-                <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
+{/*                 <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
                   <img src="/qrcode.jpg" alt="WeChat QR Code" className="w-32 h-32" />
-                </div>
+                </div> */}
               </a>
             </div>
           </div>
