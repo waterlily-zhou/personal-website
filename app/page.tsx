@@ -344,14 +344,19 @@ export default function Home() {
           <h1 className="text-3xl mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
             Projects &<br />Writings 
           </h1>
-          <div className="relative hidden md:block">
+          <div className="relative hidden md:block w-24 h-24">
             <Image 
               src="/orangeStar.svg" 
               alt="Decorative star"
               width={96}
               height={96}
-              className="w-full h-full"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
+              className="object-contain"
+              priority
+              style={{ 
+                filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))',
+                transform: 'translate3d(0, 0, 0)',  // Force GPU acceleration
+                willChange: 'transform'  // Hint to browser about animation
+              }}
             />
           </div>
           <div className="writing-vertical-rl text-gray-300 pr-4 hidden md:block">
