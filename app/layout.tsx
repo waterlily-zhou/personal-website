@@ -21,19 +21,36 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: {
-    card: 'summary',  // Using summary for square image
+    card: 'summary',
     title: 'waterlily-zhou',
-    creator: '@waterlily-zhou', 
-    images: ['/images/og-square.png'],  // Using the same square image for consistency
+    creator: '@waterlily-zhou',
+    images: ['/images/og-square.png'],
   },
   icons: {
     icon: [
       {
-        url: '/moonOverVenus.ico',
+        url: '/images/og-square.png',  // Use OG image as icon for better share previews
+        sizes: 'any',
+        type: 'image/png'
+      },
+      {
+        url: '/moonOverVenus.ico',  // Keep the original favicon as fallback
         sizes: 'any',
         type: 'image/x-icon'
       }
+    ],
+    apple: [
+      {
+        url: '/images/og-square.png',  // Use OG image for Apple devices
+        sizes: '800x800',
+        type: 'image/png'
+      }
     ]
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'waterlily-zhou',
+    statusBarStyle: 'black-translucent'
   }
 };
 
