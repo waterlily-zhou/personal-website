@@ -347,7 +347,34 @@ function ConstellationScene() {
                             lineNumber: 238,
                             columnNumber: 11
                         }, this)),
-                    Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
+                    Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>{
+                        // Define the navigation function
+                        const handleNavigation = ()=>{
+                            if (name === 'mirach') {
+                                const aboutSection = document.querySelector('.about-section');
+                                if (aboutSection) {
+                                    const rect = aboutSection.getBoundingClientRect();
+                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                    const targetPosition = scrollTop + rect.top - 50;
+                                    window.scrollTo({
+                                        top: targetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            } else if (name === 'alpheratz') {
+                                const projectsSection = document.querySelector('.projects-section');
+                                if (projectsSection) {
+                                    const rect = projectsSection.getBoundingClientRect();
+                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                    const targetPosition = scrollTop + rect.top - 50;
+                                    window.scrollTo({
+                                        top: targetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }
+                        };
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
                             renderOrder: 3,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
@@ -358,25 +385,11 @@ function ConstellationScene() {
                                     isClickable: name === 'mirach' || name === 'alpheratz',
                                     isHovered: hoveredStar === name,
                                     onHover: (isHovered)=>setHoveredStar(isHovered ? name : null),
-                                    onClick: name === 'mirach' ? ()=>{
-                                        const aboutSection = document.querySelector('.about-section');
-                                        if (aboutSection) {
-                                            aboutSection.scrollIntoView({
-                                                behavior: 'smooth'
-                                            });
-                                        }
-                                    } : name === 'alpheratz' ? ()=>{
-                                        const projectsSection = document.querySelector('.projects-section');
-                                        if (projectsSection) {
-                                            projectsSection.scrollIntoView({
-                                                behavior: 'smooth'
-                                            });
-                                        }
-                                    } : undefined
+                                    onClick: handleNavigation
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 253,
-                                    columnNumber: 13
+                                    lineNumber: 281,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
                                     position: [
@@ -392,31 +405,8 @@ function ConstellationScene() {
                                                 anchorX: "left",
                                                 anchorY: "middle",
                                                 onClick: (e)=>{
-                                                    if (name === 'mirach') {
-                                                        e.stopPropagation();
-                                                        const aboutSection = document.querySelector('.about-section');
-                                                        if (aboutSection) {
-                                                            const rect = aboutSection.getBoundingClientRect();
-                                                            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                                            const targetPosition = scrollTop + rect.top - 50;
-                                                            window.scrollTo({
-                                                                top: targetPosition,
-                                                                behavior: 'smooth'
-                                                            });
-                                                        }
-                                                    } else if (name === 'alpheratz') {
-                                                        e.stopPropagation();
-                                                        const projectsSection = document.querySelector('#projects-section');
-                                                        if (projectsSection) {
-                                                            const rect = projectsSection.getBoundingClientRect();
-                                                            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                                            const targetPosition = scrollTop + rect.top - 50;
-                                                            window.scrollTo({
-                                                                top: targetPosition,
-                                                                behavior: 'smooth'
-                                                            });
-                                                        }
-                                                    }
+                                                    e.stopPropagation();
+                                                    handleNavigation();
                                                 },
                                                 onPointerOver: (e)=>{
                                                     if (name === 'mirach' || name === 'alpheratz') {
@@ -433,8 +423,8 @@ function ConstellationScene() {
                                                 children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                                                lineNumber: 277,
-                                                columnNumber: 17
+                                                lineNumber: 293,
+                                                columnNumber: 19
                                             }, this),
                                             (name === 'alpheratz' || name === 'mirach') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
                                                 position: [
@@ -449,31 +439,32 @@ function ConstellationScene() {
                                                 children: name
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                                                lineNumber: 325,
-                                                columnNumber: 19
+                                                lineNumber: 318,
+                                                columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 276,
-                                        columnNumber: 15
+                                        lineNumber: 292,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 275,
-                                    columnNumber: 13
+                                    lineNumber: 291,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 252,
-                            columnNumber: 11
-                        }, this)),
+                            lineNumber: 280,
+                            columnNumber: 13
+                        }, this);
+                    }),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 341,
+                        lineNumber: 335,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -485,7 +476,7 @@ function ConstellationScene() {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 343,
+                        lineNumber: 337,
                         columnNumber: 9
                     }, this)
                 ]

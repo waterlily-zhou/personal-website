@@ -3,20 +3,18 @@ import "./globals.css";
 /* import Navigation from "./components/Navigation"; */
 
 export const metadata: Metadata = {
-  title: "waterily-zhou",
-  description: "Full-stack developer focused on building user-friendly and scalable Web3 applications",
-  metadataBase: new URL('https://waterilyzhou.xyz'),
+  title: "waterlily-zhou",
+  metadataBase: new URL('https://waterlilyzhou.xyz'),
   openGraph: {
-    title: 'Waterily Zhou | Full-stack Developer',
-    description: 'Full-stack developer focused on building user-friendly and scalable Web3 applications',
-    url: 'https://waterilyzhou.xyz',
-    siteName: 'waterily-zhou',
+    title: 'waterlily-zhou',
+    url: 'https://waterkilyzhou.xyz',
+    siteName: 'waterlily-zhou',
     images: [
       {
-        url: '/api/og',
-        width: 1200,
-        height: 630,
-        alt: 'Waterily Zhou'
+        url: '/images/og-square.png',  // 800x800 for WeChat
+        width: 800,
+        height: 800,
+        alt: 'Waterlily Zhou'
       }
     ],
     locale: 'en_US',
@@ -24,10 +22,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Waterily Zhou',
-    description: 'Full-stack developer focused on building user-friendly and scalable Web3 applications',
-    creator: '@waterily-zhou',
-    images: ['/api/og'],
+    title: 'Waterlily Zhou',
+    creator: '@waterlily-zhou',
+    images: [
+      {
+        url: '/images/og-twitter.png',  // 1200x600 for Twitter
+        width: 1200,
+        height: 600,
+        alt: 'Waterlily Zhou'
+      }
+    ],
   },
   icons: {
     icon: [
