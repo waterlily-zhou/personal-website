@@ -372,7 +372,7 @@ export default function Home() {
             </div>
             
             {/* Projects Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 relative z-20">
               {/* Uncommons Website */}
               <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">

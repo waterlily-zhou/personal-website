@@ -335,6 +335,10 @@ img, video {
   }
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .absolute {
   position: absolute;
 }
@@ -377,6 +381,10 @@ img, video {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.top-4 {
+  top: 1rem;
 }
 
 .top-8 {
@@ -775,6 +783,10 @@ img, video {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-right {

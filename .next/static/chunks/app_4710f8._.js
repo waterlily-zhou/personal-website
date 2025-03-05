@@ -269,214 +269,233 @@ function ConstellationScene() {
             starPositions.vAndromedae.pos
         ]
     ];
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
-        className: "absolute top-0 left-0 w-full h-full touch-pan-y",
-        camera: {
-            position: [
-                0,
-                0,
-                10
-            ],
-            fov: 45,
-            rotation: [
-                0,
-                0,
-                0
-            ]
-        },
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
-                enableZoom: false,
-                enablePan: false,
-                enableRotate: true,
-                autoRotate: true,
-                autoRotateSpeed: -0.2,
-                rotateSpeed: 0.5,
-                minPolarAngle: Math.PI / 2,
-                maxPolarAngle: Math.PI / 2,
-                enableDamping: true,
-                dampingFactor: 0.05
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-4 left-0 w-full text-center z-10 pointer-events-none",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "text-gray-300 text-sm font-light",
+                    children: "Touch the brightest stars to navigate."
+                }, void 0, false, {
+                    fileName: "[project]/app/components/ConstellationScene.tsx",
+                    lineNumber: 207,
+                    columnNumber: 9
+                }, this)
             }, void 0, false, {
+                fileName: "[project]/app/components/ConstellationScene.tsx",
+                lineNumber: 206,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
+                className: "absolute top-0 left-0 w-full h-full touch-pan-y",
+                camera: {
+                    position: [
+                        0,
+                        0,
+                        10
+                    ],
+                    fov: 45,
+                    rotation: [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
+                        enableZoom: false,
+                        enablePan: false,
+                        enableRotate: true,
+                        autoRotate: true,
+                        autoRotateSpeed: -0.2,
+                        rotateSpeed: 0.5,
+                        minPolarAngle: Math.PI / 2,
+                        maxPolarAngle: Math.PI / 2,
+                        enableDamping: true,
+                        dampingFactor: 0.05
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                        lineNumber: 213,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Stars$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stars"], {
+                        radius: 100,
+                        depth: 50,
+                        count: 1000,
+                        factor: 4,
+                        saturation: 0,
+                        fade: true,
+                        speed: 1
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                        lineNumber: 226,
+                        columnNumber: 9
+                    }, this),
+                    lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
+                            points: [
+                                start,
+                                end
+                            ],
+                            color: "red",
+                            lineWidth: 1.5,
+                            opacity: 0.5,
+                            transparent: true,
+                            renderOrder: 0,
+                            depthWrite: false
+                        }, index, false, {
+                            fileName: "[project]/app/components/ConstellationScene.tsx",
+                            lineNumber: 238,
+                            columnNumber: 11
+                        }, this)),
+                    Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
+                            renderOrder: 3,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
+                                    position: pos,
+                                    color: color,
+                                    pointColor: pointColor,
+                                    scale: scale,
+                                    isClickable: name === 'mirach' || name === 'alpheratz',
+                                    isHovered: hoveredStar === name,
+                                    onHover: (isHovered)=>setHoveredStar(isHovered ? name : null),
+                                    onClick: name === 'mirach' ? ()=>{
+                                        const aboutSection = document.querySelector('.about-section');
+                                        if (aboutSection) {
+                                            aboutSection.scrollIntoView({
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    } : name === 'alpheratz' ? ()=>{
+                                        const projectsSection = document.querySelector('.projects-section');
+                                        if (projectsSection) {
+                                            projectsSection.scrollIntoView({
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    } : undefined
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/ConstellationScene.tsx",
+                                    lineNumber: 253,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
+                                    position: [
+                                        pos.x + 0.2,
+                                        pos.y + 0.2,
+                                        pos.z
+                                    ],
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                                                fontSize: name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09,
+                                                color: name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666',
+                                                anchorX: "left",
+                                                anchorY: "middle",
+                                                onClick: (e)=>{
+                                                    if (name === 'mirach') {
+                                                        e.stopPropagation();
+                                                        const aboutSection = document.querySelector('.about-section');
+                                                        if (aboutSection) {
+                                                            const rect = aboutSection.getBoundingClientRect();
+                                                            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                                            const targetPosition = scrollTop + rect.top - 50;
+                                                            window.scrollTo({
+                                                                top: targetPosition,
+                                                                behavior: 'smooth'
+                                                            });
+                                                        }
+                                                    } else if (name === 'alpheratz') {
+                                                        e.stopPropagation();
+                                                        const projectsSection = document.querySelector('#projects-section');
+                                                        if (projectsSection) {
+                                                            const rect = projectsSection.getBoundingClientRect();
+                                                            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                                            const targetPosition = scrollTop + rect.top - 50;
+                                                            window.scrollTo({
+                                                                top: targetPosition,
+                                                                behavior: 'smooth'
+                                                            });
+                                                        }
+                                                    }
+                                                },
+                                                onPointerOver: (e)=>{
+                                                    if (name === 'mirach' || name === 'alpheratz') {
+                                                        e.stopPropagation();
+                                                        document.body.style.cursor = 'pointer';
+                                                    }
+                                                },
+                                                onPointerOut: (e)=>{
+                                                    if (name === 'mirach' || name === 'alpheratz') {
+                                                        e.stopPropagation();
+                                                        document.body.style.cursor = 'auto';
+                                                    }
+                                                },
+                                                children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ConstellationScene.tsx",
+                                                lineNumber: 277,
+                                                columnNumber: 17
+                                            }, this),
+                                            (name === 'alpheratz' || name === 'mirach') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                                                position: [
+                                                    0,
+                                                    -0.2,
+                                                    0
+                                                ],
+                                                fontSize: 0.09,
+                                                color: "#666666",
+                                                anchorX: "left",
+                                                anchorY: "middle",
+                                                children: name
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ConstellationScene.tsx",
+                                                lineNumber: 325,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                                        lineNumber: 276,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/ConstellationScene.tsx",
+                                    lineNumber: 275,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, index, true, {
+                            fileName: "[project]/app/components/ConstellationScene.tsx",
+                            lineNumber: 252,
+                            columnNumber: 11
+                        }, this)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
+                        intensity: 0.5
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                        lineNumber: 341,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
+                        position: [
+                            5,
+                            5,
+                            5
+                        ],
+                        intensity: 0.5
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                        lineNumber: 343,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "[project]/app/components/ConstellationScene.tsx",
                 lineNumber: 209,
                 columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Stars$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stars"], {
-                radius: 100,
-                depth: 50,
-                count: 1000,
-                factor: 4,
-                saturation: 0,
-                fade: true,
-                speed: 1
-            }, void 0, false, {
-                fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 222,
-                columnNumber: 7
-            }, this),
-            lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
-                    points: [
-                        start,
-                        end
-                    ],
-                    color: "red",
-                    lineWidth: 1.5,
-                    opacity: 0.5,
-                    transparent: true,
-                    renderOrder: 0,
-                    depthWrite: false
-                }, index, false, {
-                    fileName: "[project]/app/components/ConstellationScene.tsx",
-                    lineNumber: 234,
-                    columnNumber: 9
-                }, this)),
-            Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
-                    renderOrder: 3,
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
-                            position: pos,
-                            color: color,
-                            pointColor: pointColor,
-                            scale: scale,
-                            isClickable: name === 'mirach' || name === 'alpheratz',
-                            isHovered: hoveredStar === name,
-                            onHover: (isHovered)=>setHoveredStar(isHovered ? name : null),
-                            onClick: name === 'mirach' ? ()=>{
-                                const aboutSection = document.querySelector('.about-section');
-                                if (aboutSection) {
-                                    aboutSection.scrollIntoView({
-                                        behavior: 'smooth'
-                                    });
-                                }
-                            } : name === 'alpheratz' ? ()=>{
-                                const projectsSection = document.querySelector('.projects-section');
-                                if (projectsSection) {
-                                    projectsSection.scrollIntoView({
-                                        behavior: 'smooth'
-                                    });
-                                }
-                            } : undefined
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 249,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
-                            position: [
-                                pos.x + 0.2,
-                                pos.y + 0.2,
-                                pos.z
-                            ],
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
-                                        fontSize: name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09,
-                                        color: name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666',
-                                        anchorX: "left",
-                                        anchorY: "middle",
-                                        onClick: (e)=>{
-                                            if (name === 'mirach') {
-                                                e.stopPropagation();
-                                                const aboutSection = document.querySelector('.about-section');
-                                                if (aboutSection) {
-                                                    const rect = aboutSection.getBoundingClientRect();
-                                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                                    const targetPosition = scrollTop + rect.top - 50;
-                                                    window.scrollTo({
-                                                        top: targetPosition,
-                                                        behavior: 'smooth'
-                                                    });
-                                                }
-                                            } else if (name === 'alpheratz') {
-                                                e.stopPropagation();
-                                                const projectsSection = document.querySelector('#projects-section');
-                                                if (projectsSection) {
-                                                    const rect = projectsSection.getBoundingClientRect();
-                                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                                    const targetPosition = scrollTop + rect.top - 50;
-                                                    window.scrollTo({
-                                                        top: targetPosition,
-                                                        behavior: 'smooth'
-                                                    });
-                                                }
-                                            }
-                                        },
-                                        onPointerOver: (e)=>{
-                                            if (name === 'mirach' || name === 'alpheratz') {
-                                                e.stopPropagation();
-                                                document.body.style.cursor = 'pointer';
-                                            }
-                                        },
-                                        onPointerOut: (e)=>{
-                                            if (name === 'mirach' || name === 'alpheratz') {
-                                                e.stopPropagation();
-                                                document.body.style.cursor = 'auto';
-                                            }
-                                        },
-                                        children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 273,
-                                        columnNumber: 15
-                                    }, this),
-                                    (name === 'alpheratz' || name === 'mirach') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
-                                        position: [
-                                            0,
-                                            -0.2,
-                                            0
-                                        ],
-                                        fontSize: 0.09,
-                                        color: "#666666",
-                                        anchorX: "left",
-                                        anchorY: "middle",
-                                        children: name
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 321,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/ConstellationScene.tsx",
-                                lineNumber: 272,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 271,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, index, true, {
-                    fileName: "[project]/app/components/ConstellationScene.tsx",
-                    lineNumber: 248,
-                    columnNumber: 9
-                }, this)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
-                intensity: 0.5
-            }, void 0, false, {
-                fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 337,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
-                position: [
-                    5,
-                    5,
-                    5
-                ],
-                intensity: 0.5
-            }, void 0, false, {
-                fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 339,
-                columnNumber: 7
             }, this)
         ]
-    }, void 0, true, {
-        fileName: "[project]/app/components/ConstellationScene.tsx",
-        lineNumber: 205,
-        columnNumber: 5
-    }, this);
+    }, void 0, true);
 }
 _s1(ConstellationScene, "tSKpt9V8wYCOcHrgEAMmaZucp2w=");
 _c1 = ConstellationScene;
@@ -1186,7 +1205,7 @@ function Home() {
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20",
+                                        className: "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 relative z-20",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                 href: "https://unco-website.vercel.app/",

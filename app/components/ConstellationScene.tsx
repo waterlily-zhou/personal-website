@@ -202,141 +202,146 @@ export default function ConstellationScene() {
   ];
 
   return (
-    <Canvas 
-      className="absolute top-0 left-0 w-full h-full touch-pan-y"
-      camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
-    >
-      <OrbitControls 
-        enableZoom={false}
-        enablePan={false}
-        enableRotate={true}
-        autoRotate={true}
-        autoRotateSpeed={-0.2}
-        rotateSpeed={0.5}
-        minPolarAngle={Math.PI / 2}
-        maxPolarAngle={Math.PI / 2}
-        enableDamping={true}
-        dampingFactor={0.05}
-      />
-      
-      <Stars 
-        radius={100} 
-        depth={50} 
-        count={1000} 
-        factor={4} 
-        saturation={0} 
-        fade 
-        speed={1} 
-      />
-      
-      {/* Draw connection lines */}
-      {lines.map(([start, end], index) => (
-        <Line 
-          key={index} 
-          points={[start, end]} 
-          color="red" 
-          lineWidth={1.5} 
-          opacity={0.5}
-          transparent
-          renderOrder={0}
-          depthWrite={false}
+    <>
+      <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
+        <p className="text-gray-300 text-sm font-light">Touch the brightest stars to navigate.</p>
+      </div>
+      <Canvas 
+        className="absolute top-0 left-0 w-full h-full touch-pan-y"
+        camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
+      >
+        <OrbitControls 
+          enableZoom={false}
+          enablePan={false}
+          enableRotate={true}
+          autoRotate={true}
+          autoRotateSpeed={-0.2}
+          rotateSpeed={0.5}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+          enableDamping={true}
+          dampingFactor={0.05}
         />
-      ))}
-      
-      {/* Draw the stars */}
-      {Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index) => (
-        <group key={index} renderOrder={3}>
-          <Star 
-            position={pos}
-            color={color}
-            pointColor={pointColor}
-            scale={scale}
-            isClickable={name === 'mirach' || name === 'alpheratz'}
-            isHovered={hoveredStar === name}
-            onHover={(isHovered) => setHoveredStar(isHovered ? name : null)}
-            onClick={name === 'mirach' ? 
-              () => {
-                const aboutSection = document.querySelector('.about-section');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              } : name === 'alpheratz' ?
-              () => {
-                const projectsSection = document.querySelector('.projects-section');
-                if (projectsSection) {
-                  projectsSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              } : undefined}
+        
+        <Stars 
+          radius={100} 
+          depth={50} 
+          count={1000} 
+          factor={4} 
+          saturation={0} 
+          fade 
+          speed={1} 
+        />
+        
+        {/* Draw connection lines */}
+        {lines.map(([start, end], index) => (
+          <Line 
+            key={index} 
+            points={[start, end]} 
+            color="red" 
+            lineWidth={1.5} 
+            opacity={0.5}
+            transparent
+            renderOrder={0}
+            depthWrite={false}
           />
-          <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
-            <group>
-              <Text
-                fontSize={name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09}
-                color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
-                anchorX="left"
-                anchorY="middle"
-                onClick={(e) => {
-                  if (name === 'mirach') {
-                    e.stopPropagation();
-                    const aboutSection = document.querySelector('.about-section');
-                    if (aboutSection) {
-                      const rect = aboutSection.getBoundingClientRect();
-                      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                      const targetPosition = scrollTop + rect.top - 50;
-                      window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                      });
-                    }
-                  } else if (name === 'alpheratz') {
-                    e.stopPropagation();
-                    const projectsSection = document.querySelector('#projects-section');
-                    if (projectsSection) {
-                      const rect = projectsSection.getBoundingClientRect();
-                      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                      const targetPosition = scrollTop + rect.top - 50;
-                      window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                      });
-                    }
+        ))}
+        
+        {/* Draw the stars */}
+        {Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index) => (
+          <group key={index} renderOrder={3}>
+            <Star 
+              position={pos}
+              color={color}
+              pointColor={pointColor}
+              scale={scale}
+              isClickable={name === 'mirach' || name === 'alpheratz'}
+              isHovered={hoveredStar === name}
+              onHover={(isHovered) => setHoveredStar(isHovered ? name : null)}
+              onClick={name === 'mirach' ? 
+                () => {
+                  const aboutSection = document.querySelector('.about-section');
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
                   }
-                }}
-                onPointerOver={(e) => {
-                  if (name === 'mirach' || name === 'alpheratz') {
-                    e.stopPropagation();
-                    document.body.style.cursor = 'pointer';
+                } : name === 'alpheratz' ?
+                () => {
+                  const projectsSection = document.querySelector('.projects-section');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
                   }
-                }}
-                onPointerOut={(e) => {
-                  if (name === 'mirach' || name === 'alpheratz') {
-                    e.stopPropagation();
-                    document.body.style.cursor = 'auto';
-                  }
-                }}
-              >
-                {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
-              </Text>
-              {(name === 'alpheratz' || name === 'mirach') && (
+                } : undefined}
+            />
+            <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
+              <group>
                 <Text
-                  position={[0, -0.2, 0]}
-                  fontSize={0.09}
-                  color="#666666"
+                  fontSize={name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09}
+                  color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
                   anchorX="left"
                   anchorY="middle"
+                  onClick={(e) => {
+                    if (name === 'mirach') {
+                      e.stopPropagation();
+                      const aboutSection = document.querySelector('.about-section');
+                      if (aboutSection) {
+                        const rect = aboutSection.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const targetPosition = scrollTop + rect.top - 50;
+                        window.scrollTo({
+                          top: targetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    } else if (name === 'alpheratz') {
+                      e.stopPropagation();
+                      const projectsSection = document.querySelector('#projects-section');
+                      if (projectsSection) {
+                        const rect = projectsSection.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const targetPosition = scrollTop + rect.top - 50;
+                        window.scrollTo({
+                          top: targetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }
+                  }}
+                  onPointerOver={(e) => {
+                    if (name === 'mirach' || name === 'alpheratz') {
+                      e.stopPropagation();
+                      document.body.style.cursor = 'pointer';
+                    }
+                  }}
+                  onPointerOut={(e) => {
+                    if (name === 'mirach' || name === 'alpheratz') {
+                      e.stopPropagation();
+                      document.body.style.cursor = 'auto';
+                    }
+                  }}
                 >
-                  {name}
+                  {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
                 </Text>
-              )}
-            </group>
-          </Billboard>
-        </group>
-      ))}
+                {(name === 'alpheratz' || name === 'mirach') && (
+                  <Text
+                    position={[0, -0.2, 0]}
+                    fontSize={0.09}
+                    color="#666666"
+                    anchorX="left"
+                    anchorY="middle"
+                  >
+                    {name}
+                  </Text>
+                )}
+              </group>
+            </Billboard>
+          </group>
+        ))}
 
-      {/* Add ambient light */}
-      <ambientLight intensity={0.5} />
-      {/* Add directional light for better 3D appearance */}
-      <directionalLight position={[5, 5, 5]} intensity={0.5} />
-    </Canvas>
+        {/* Add ambient light */}
+        <ambientLight intensity={0.5} />
+        {/* Add directional light for better 3D appearance */}
+        <directionalLight position={[5, 5, 5]} intensity={0.5} />
+      </Canvas>
+    </>
   );
 }
