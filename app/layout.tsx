@@ -3,8 +3,32 @@ import "./globals.css";
 /* import Navigation from "./components/Navigation"; */
 
 export const metadata: Metadata = {
-  title: "Waterily Zhou",
-  description: "Full-stack developer focused on building user-friendly and scalable applications",
+  title: "waterily-zhou",
+  description: "Full-stack developer focused on building user-friendly and scalable Web3 applications",
+  metadataBase: new URL('https://waterilyzhou.xyz'),
+  openGraph: {
+    title: 'Waterily Zhou | Full-stack Developer',
+    description: 'Full-stack developer focused on building user-friendly and scalable Web3 applications',
+    url: 'https://waterilyzhou.xyz',
+    siteName: 'waterily-zhou',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Waterily Zhou'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Waterily Zhou',
+    description: 'Full-stack developer focused on building user-friendly and scalable Web3 applications',
+    creator: '@waterily-zhou',
+    images: ['/api/og'],
+  },
   icons: {
     icon: [
       {
