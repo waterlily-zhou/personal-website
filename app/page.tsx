@@ -263,9 +263,9 @@ export default function Home() {
               <Image 
                 src="/blueStar.svg" 
                 alt="Decorative star"
-                width={256}
-                height={256}
-                className="object-contain w-22 h-22"
+                width={96}
+                height={96}
+                className="object-contain w-22 h-22 hidden md:block"
                 priority
                 quality={100}
                 style={{ 
