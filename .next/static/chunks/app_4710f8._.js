@@ -309,8 +309,6 @@ function ConstellationScene() {
                         autoRotate: true,
                         autoRotateSpeed: -0.2,
                         rotateSpeed: 0.5,
-                        minPolarAngle: Math.PI / 2,
-                        maxPolarAngle: Math.PI / 2,
                         enableDamping: true,
                         dampingFactor: 0.05
                     }, void 0, false, {
@@ -328,7 +326,7 @@ function ConstellationScene() {
                         speed: 1
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 226,
+                        lineNumber: 224,
                         columnNumber: 9
                     }, this),
                     lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
@@ -344,7 +342,7 @@ function ConstellationScene() {
                             depthWrite: false
                         }, index, false, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 238,
+                            lineNumber: 236,
                             columnNumber: 11
                         }, this)),
                     Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>{
@@ -388,7 +386,7 @@ function ConstellationScene() {
                                     onClick: handleNavigation
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 281,
+                                    lineNumber: 279,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
@@ -423,7 +421,7 @@ function ConstellationScene() {
                                                 children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 291,
                                                 columnNumber: 19
                                             }, this),
                                             (name === 'alpheratz' || name === 'mirach') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
@@ -439,24 +437,24 @@ function ConstellationScene() {
                                                 children: name
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                                                lineNumber: 318,
+                                                lineNumber: 316,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 290,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 291,
+                                    lineNumber: 289,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 280,
+                            lineNumber: 278,
                             columnNumber: 13
                         }, this);
                     }),
@@ -464,7 +462,7 @@ function ConstellationScene() {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 335,
+                        lineNumber: 333,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -476,7 +474,7 @@ function ConstellationScene() {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 337,
+                        lineNumber: 335,
                         columnNumber: 9
                     }, this)
                 ]

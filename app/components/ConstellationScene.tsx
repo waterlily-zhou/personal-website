@@ -217,8 +217,6 @@ export default function ConstellationScene() {
           autoRotate={true}
           autoRotateSpeed={-0.2}
           rotateSpeed={0.5}
-          minPolarAngle={Math.PI / 2}
-          maxPolarAngle={Math.PI / 2}
           enableDamping={true}
           dampingFactor={0.05}
         />
