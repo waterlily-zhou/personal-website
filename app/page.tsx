@@ -142,7 +142,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Name */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-l md:border-gray-600 md:pl-4 pr-4">
-              <h1 className="text-sm text-gray-300">waterily-zhou</h1>
+              <h1 className="text-sm text-gray-300">waterlily-zhou</h1>
             </div>
             {/* Introduction */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:border-r md:border-gray-600 pr-4 md:col-span-3">
@@ -313,7 +313,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
             <div className="space-y-8">
               <p className="text-white leading-relaxed">
-                Mel (@waterily-zhou) is a full-stack engineer who enjoys
+                Mel (@waterlily-zhou) is a full-stack engineer who enjoys
                 building niche and elegant apps that seamlessly solve
                 problems. Originally trained in law, she transitioned into
                 software engineering through a bootcamp and currently

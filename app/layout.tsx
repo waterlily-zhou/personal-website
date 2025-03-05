@@ -7,31 +7,24 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://waterlilyzhou.xyz'),
   openGraph: {
     title: 'waterlily-zhou',
-    url: 'https://waterkilyzhou.xyz',
+    url: 'https://waterlilyzhou.xyz',
     siteName: 'waterlily-zhou',
     images: [
       {
-        url: '/images/og-square.png',  // 800x800 for WeChat
+        url: '/images/og-square.png',
         width: 800,
         height: 800,
-        alt: 'Waterlily Zhou'
+        alt: 'waterlily-zhou'
       }
     ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Waterlily Zhou',
-    creator: '@waterlily-zhou',
-    images: [
-      {
-        url: '/images/og-twitter.png',  // 1200x600 for Twitter
-        width: 1200,
-        height: 600,
-        alt: 'Waterlily Zhou'
-      }
-    ],
+    card: 'summary',  // Using summary for square image
+    title: 'waterlily-zhou',
+    creator: '@waterlily-zhou', 
+    images: ['/images/og-square.png'],  // Using the same square image for consistency
   },
   icons: {
     icon: [
