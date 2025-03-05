@@ -357,12 +357,6 @@ export default function Home() {
           <div className="mb-20 flex flex-col md:flex-row md:items-start gap-8 lg:gap-16">
             {/* Half moon and project title */}
             <div className="flex items-center -space-x-10 min-w-[150px] relative z-20">
-{/*               <img 
-                src="/halfMoon.svg"
-                alt="Half moon"
-                className="w-18 h-24"
-                style={{ filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))' }}
-              /> */}
               <h2 className="text-xl relative z-10 text-white">Projects</h2>
             </div>
             
@@ -434,15 +428,6 @@ export default function Home() {
           <div className='flex flex-col md:flex-row md:items-start gap-4 md:gap-8 lg:gap-16 relative z-20'>
             {/* Half moon and writing title*/}
             <div className="flex items-center -space-x-10 min-w-[150px]">
-{/*               <img 
-                src="/halfMoon.svg"
-                alt="Half moon"
-                className="w-18 h-24"
-                style={{ 
-                  filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))',
-                  transform: 'rotate(180deg)'
-                }}
-              /> */}
               <h2 className="text-xl relative z-10 text-white">Writings</h2>
             </div>
 
