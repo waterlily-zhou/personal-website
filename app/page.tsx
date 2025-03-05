@@ -259,7 +259,7 @@ export default function Home() {
           
           {/* Decorative elements - desktop only */}
           <div className="absolute flex top-8 right-8 flex-col items-end">
-            <div className="relative h-16 md:h-24 mt-32 hidden md:block">
+            <div className="relative h-16 md:h-24 mt-32">
               <Image 
                 src="/blueStar.svg" 
                 alt="Decorative star"

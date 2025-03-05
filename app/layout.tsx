@@ -79,20 +79,13 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/fonts/NeueMontreal/NeueMontreal-Light.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
           href="/fonts/Jedira/jedira-regular.ttf"
           as="font"
           type="font/ttf"
           crossOrigin=""
         />
         <link
-          rel="preload"
+          rel="prefetch"
           href="/fonts/Huaying/HuayingMinchoClassic.ttf"
           as="font"
           type="font/ttf"

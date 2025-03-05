@@ -9,7 +9,7 @@
        url('/fonts/NeueMontreal/NeueMontreal-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 /* Light */
@@ -19,7 +19,7 @@
        url('/fonts/NeueMontreal/NeueMontreal-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 /* Bold */
@@ -29,7 +29,7 @@
        url('/fonts/NeueMontreal/NeueMontreal-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 /* Jedira Regular */
@@ -39,16 +39,18 @@
        url('/fonts/Jedira/jedira-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'HuayingMincho';
   src: local('HuayingMincho'),
+       local('SimSun'),
+       local('MS Mincho'),
        url('/fonts/Huaying/HuayingMinchoClassic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 :root {
