@@ -70,6 +70,20 @@ export default function RootLayout({
           type="font/otf"
           crossOrigin=""
         />
+        <link
+          rel="preload"
+          href="/fonts/Jedira/jedira-regular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Huaying/HuayingMinchoClassic.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin=""
+        />
       </head>
       <body className="bg-black text-white min-h-screen antialiased">
         <main>

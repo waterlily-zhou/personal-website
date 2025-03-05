@@ -203,7 +203,7 @@ export default function ConstellationScene() {
 
   return (
     <Canvas 
-      className="absolute top-0 left-0 w-full h-full"
+      className="absolute top-0 left-0 w-full h-full touch-pan-y"
       camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
     >
       <OrbitControls 
@@ -215,6 +215,8 @@ export default function ConstellationScene() {
         rotateSpeed={0.5}
         minPolarAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 2}
+        enableDamping={true}
+        dampingFactor={0.05}
       />
       
       <Stars 

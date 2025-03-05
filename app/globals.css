@@ -35,8 +35,8 @@
 /* Jedira Regular */
 @font-face {
   font-family: 'Jedira';
-  src: local('Jedira Regular'),
-       url('/fonts/Jedira/jedira-Regular.ttf') format('truetype');
+  src: local('Jedira'),
+       url('/fonts/Jedira/jedira-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -45,7 +45,7 @@
 @font-face {
   font-family: 'HuayingMincho';
   src: local('HuayingMincho'),
-       url('/fonts/Huaying/huayingMinchoClassic.ttf') format('truetype');
+       url('/fonts/Huaying/HuayingMinchoClassic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: block;

@@ -563,6 +563,11 @@ img, video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.touch-pan-y {
+  --tw-pan-y: pan-y;
+  touch-action: var(--tw-pan-x) var(--tw-pan-y) var(--tw-pinch-zoom);
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -893,7 +898,7 @@ img, video {
 
 @font-face {
   font-family: Jedira;
-  src: local(Jedira Regular), url("/fonts/Jedira/jedira-Regular.ttf") format("truetype");
+  src: local(Jedira), url("/fonts/Jedira/jedira-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -901,7 +906,7 @@ img, video {
 
 @font-face {
   font-family: HuayingMincho;
-  src: local(HuayingMincho), url("/fonts/Huaying/huayingMinchoClassic.ttf") format("truetype");
+  src: local(HuayingMincho), url("/fonts/Huaying/HuayingMinchoClassic.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
