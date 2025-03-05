@@ -926,7 +926,7 @@ img, video {
 
 @font-face {
   font-family: HuayingMincho;
-  src: local(HuayingMincho), local(SimSun), local(MS Mincho), url("/fonts/Huaying/HuayingMinchoClassic.ttf") format("truetype");
+  src: local(HuayingMincho), local(SimSun), local(MS Mincho), url("/fonts/Huaying/subset-font.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

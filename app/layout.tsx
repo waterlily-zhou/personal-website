@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: 'waterlily-zhou',
     images: [
       {
-        url: '/images/og-square.png',
+        url: 'https://waterlilyzhou.xyz/images/og-square.png',
         width: 800,
         height: 800,
         alt: 'waterlily-zhou'
@@ -28,12 +28,12 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'waterlily-zhou',
     creator: '@waterlily-zhou',
-    images: ['/images/og-square.png'],
+    images: ['https://waterlilyzhou.xyz/images/og-square.png'],
   },
   icons: {
     icon: [
       {
-        url: '/images/og-square.png',  // Use OG image as icon for better share previews
+        url: 'https://waterlilyzhou.xyz/images/og-square.png',  // Use absolute URL
         sizes: 'any',
         type: 'image/png'
       },
@@ -67,10 +67,20 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta property="wx:title" content="waterlily-zhou" />
-        <meta property="wx:description" content="个人网站" />
-        <meta property="wx:image" content="https://waterlilyzhou.xyz/images/og-square.png" />
-        <meta property="wx:enable_sharing" content="true" />
+        {/* WeChat meta tags */}
+        <meta itemProp="name" content="waterlily-zhou" />
+        <meta itemProp="description" content="个人网站" />
+        <meta itemProp="image" content="https://waterlilyzhou.xyz/images/og-square.png" />
+        {/* Standard Open Graph tags */}
+        <meta property="og:title" content="waterlily-zhou" />
+        <meta property="og:description" content="个人网站" />
+        <meta property="og:image" content="https://waterlilyzhou.xyz/images/og-square.png" />
+        <meta property="og:url" content="https://waterlilyzhou.xyz" />
+        {/* WeChat sharing */}
+        <meta name="wx:title" content="waterlily-zhou" />
+        <meta name="wx:description" content="个人网站" />
+        <meta name="wx:image" content="https://waterlilyzhou.xyz/images/og-square.png" />
+        <meta name="wx:enable_sharing" content="true" />
         <link
           rel="preload"
           href="/fonts/NeueMontreal/NeueMontreal-Regular.otf"
@@ -93,8 +103,8 @@ export default function RootLayout({
           crossOrigin=""
         />
         <link
-          rel="prefetch"
-          href="/fonts/Huaying/HuayingMinchoClassic.ttf"
+          rel="preload"
+          href="/fonts/Huaying/subset-font.ttf"
           as="font"
           type="font/ttf"
           crossOrigin=""
