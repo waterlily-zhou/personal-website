@@ -646,7 +646,7 @@ function Home() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-l md:border-gray-600 md:pl-4 pr-4",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "text-sm font-light text-gray-300",
+                                        className: "text-sm text-gray-300",
                                         children: "waterily-zhou"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
@@ -831,7 +831,7 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400",
+                        className: "absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-300",
                         children: "250萬光年之外的螺旋星系，孕育著比銀河更先進的文明。銀河與它，或彼此吞噬、或並行时空。兩者的微妙关系，如同最直接的鏡像，對望——在無數次朝聖中浮游問道。"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
@@ -839,7 +839,7 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute bottom-8 left-8 text-sm text-gray-400",
+                        className: "absolute bottom-8 left-8 text-sm text-gray-300",
                         children: [
                             "Scroll",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
@@ -944,7 +944,7 @@ function Home() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "writing-vertical-rl text-white pr-4",
+                                className: "writing-vertical-rl text-gray-300 pr-4",
                                 children: "關於我的一些事…"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
@@ -1012,7 +1012,7 @@ function Home() {
                                 className: "space-y-8",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-white/90 leading-relaxed",
+                                        className: "text-white leading-relaxed",
                                         children: "Mel (@waterily-zhou) is a full-stack engineer who enjoys building niche and elegant apps that seamlessly solve problems. Originally trained in law, she transitioned into software engineering through a bootcamp and currently working in Web3."
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
@@ -1020,7 +1020,7 @@ function Home() {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-white/90 leading-relaxed",
+                                        className: "text-white leading-relaxed",
                                         children: 'In life, she has lived across multiple continents and is now based in Lisbon. She practices Vipassana meditation daily and connects with Chinese philosophy. This year, she follows the motto "潜龙勿用"—approaching work with equanimity and a learner\'s attitude.'
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
@@ -1113,7 +1113,7 @@ function Home() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "writing-vertical-rl text-white pr-4 hidden md:block",
+                                className: "writing-vertical-rl text-gray-300 pr-4 hidden md:block",
                                 children: "過往項目與文章"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
@@ -1142,7 +1142,7 @@ function Home() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center -space-x-10 min-w-[150px] relative z-20",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "text-2xl relative z-10 text-gray-300",
+                                            className: "text-xl relative z-10 text-white",
                                             children: "Projects"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
@@ -1173,7 +1173,7 @@ function Home() {
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm text-white/70 mb-4",
+                                                            className: "text-sm text-gray-300 mb-4",
                                                             children: "An intro page for the Uncommons Community"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
@@ -1240,7 +1240,7 @@ function Home() {
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm text-white/70 mb-4",
+                                                            className: "text-sm text-gray-300 mb-4",
                                                             children: "Data dashboard for crypto and topic data on X"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
@@ -1307,7 +1307,7 @@ function Home() {
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm text-white/70 mb-4",
+                                                            className: "text-sm text-gray-300 mb-4",
                                                             children: "A 1-1 personal insight consultation service"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
@@ -1356,7 +1356,7 @@ function Home() {
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm text-white/70 mb-4",
+                                                            className: "text-sm text-gray-300 mb-4",
                                                             children: "TEE-based decentralized identity solutions"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
@@ -1424,7 +1424,7 @@ function Home() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center -space-x-10 min-w-[150px]",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "text-2xl relative z-10 text-gray-300",
+                                            className: "text-xl relative z-10 text-white",
                                             children: "Writings"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
@@ -1484,7 +1484,7 @@ function Home() {
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-white/80",
+                                                        className: "text-gray-300",
                                                         children: "Articles on identity and privacy technologies"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
@@ -1542,7 +1542,7 @@ function Home() {
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-white/80",
+                                                        className: "text-gray-300",
                                                         children: "Opinions and analysis on the social impact of Web3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
@@ -1600,7 +1600,7 @@ function Home() {
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-white/80",
+                                                        className: "text-gray-300",
                                                         children: "Reflections on understanding and navigating life"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",

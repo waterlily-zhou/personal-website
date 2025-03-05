@@ -8,6 +8,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Waterily Zhou",
   description: "Full-stack developer focused on building user-friendly and scalable applications",
+  icons: {
+    icon: [
+      {
+        url: '/moonOverVenus.ico',
+        sizes: 'any',
+        type: 'image/x-icon'
+      }
+    ]
+  }
 };
 
 export default function RootLayout({

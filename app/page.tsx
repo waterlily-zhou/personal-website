@@ -141,7 +141,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Name */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:col-span-2 md:border-r md:border-l md:border-gray-600 md:pl-4 pr-4">
-              <h1 className="text-sm font-light text-gray-300">waterily-zhou</h1>
+              <h1 className="text-sm text-gray-300">waterily-zhou</h1>
             </div>
             {/* Introduction */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:border-r md:border-gray-600 pr-4 md:col-span-3">
@@ -207,14 +207,14 @@ export default function Home() {
         </div>
 
         {/* Vertical text on right */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-400">
+        <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-300">
           250萬光年之外的螺旋星系，孕育著比銀河更先進的文明。銀河與它，或彼此吞噬、或並行时空。兩者的微妙关系，如同最直接的鏡像，對望——在無數次朝聖中浮游問道。
           {/* <br /> */}
           
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-8 text-sm text-gray-400">
+        <div className="absolute bottom-8 left-8 text-sm text-gray-300">
           Scroll<br />
           to view
         </div>
@@ -260,7 +260,7 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="writing-vertical-rl text-white pr-4">
+          <div className="writing-vertical-rl text-gray-300 pr-4">
             關於我的一些事…
           </div>
         </div>
@@ -298,14 +298,14 @@ export default function Home() {
         <div className="relative z-10 min-h-screen flex items-center">
           <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
             <div className="space-y-8">
-              <p className="text-white/90 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 Mel (@waterily-zhou) is a full-stack engineer who enjoys
                 building niche and elegant apps that seamlessly solve
                 problems. Originally trained in law, she transitioned into
                 software engineering through a bootcamp and currently
                 working in Web3.
               </p>
-              <p className="text-white/90 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 In life, she has lived across multiple continents and is now
                 based in Lisbon. She practices Vipassana meditation daily
                 and connects with Chinese philosophy. This year, she
@@ -338,7 +338,7 @@ export default function Home() {
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
           </div>
-          <div className="writing-vertical-rl text-white pr-4 hidden md:block">
+          <div className="writing-vertical-rl text-gray-300 pr-4 hidden md:block">
             過往項目與文章
           </div>
         </div>
@@ -358,7 +358,7 @@ export default function Home() {
                 className="w-18 h-24"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.8))' }}
               /> */}
-              <h2 className="text-2xl relative z-10 text-gray-300">Projects</h2>
+              <h2 className="text-xl relative z-10 text-white">Projects</h2>
             </div>
             
             {/* Projects Cards */}
@@ -367,7 +367,7 @@ export default function Home() {
               <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">Uncommons Website</h3>
-                  <p className="text-sm text-white/70 mb-4">
+                  <p className="text-sm text-gray-300 mb-4">
                   An intro page for the Uncommons Community
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -382,7 +382,7 @@ export default function Home() {
               <a href="https://github.com/kayyueth/birdy_ai" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">Birdy.ai</h3>
-                  <p className="text-sm text-white/70 mb-4">
+                  <p className="text-sm text-gray-300 mb-4">
                     Data dashboard for crypto and topic data on X
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -397,7 +397,7 @@ export default function Home() {
               <a href="https://melmelz.notion.site/KK-all-in-5da6ad0c27b141f3b167afaa5d83a73a?pvs=4" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">Mel&apos;s Tarot House</h3>
-                  <p className="text-sm text-white/70 mb-4">
+                  <p className="text-sm text-gray-300 mb-4">
                     A 1-1 personal insight consultation service
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -410,7 +410,7 @@ export default function Home() {
               <a href="https://www.heima.network/rebranding" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">Litentry (employed)</h3>
-                  <p className="text-sm text-white/70 mb-4">
+                  <p className="text-sm text-gray-300 mb-4">
                     TEE-based decentralized identity solutions
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -438,7 +438,7 @@ export default function Home() {
                   transform: 'rotate(180deg)'
                 }}
               /> */}
-              <h2 className="text-2xl relative z-10 text-gray-300">Writings</h2>
+              <h2 className="text-xl relative z-10 text-white">Writings</h2>
             </div>
 
             <div className="w-full">
@@ -460,7 +460,7 @@ export default function Home() {
                   </svg>
                   <span className="text-white transition-colors font-bold min-w-[100px]">Medium</span>
                 </div>
-                <p className="text-white/80">Articles on identity and privacy technologies</p>
+                <p className="text-gray-300">Articles on identity and privacy technologies</p>
               </a>
 
               <a href="https://foresightnews.pro/column/detail/1154" target="_blank" rel="noopener noreferrer" className="block group flex flex-row items-center gap-4 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
@@ -481,7 +481,7 @@ export default function Home() {
                   </svg>
                   <span className="text-white transition-colors font-bold min-w-[100px]">Foresight News</span>
                 </div>
-                <p className="text-white/80">Opinions and analysis on the social impact of Web3</p>
+                <p className="text-gray-300">Opinions and analysis on the social impact of Web3</p>
               </a>
 
               <a href="https://mp.weixin.qq.com/s/VL8auNw4IbvRF-6m3PSq_w" target="_blank" rel="noopener noreferrer" className="block group flex flex-row items-center gap-4 hover:bg-red-700 pt-4 pb-4 border-b border-white/30 hover:border-red-700 transition-all duration-300">
@@ -502,7 +502,7 @@ export default function Home() {
                   </svg>
                   <span className="text-white transition-colors font-bold min-w-[100px]">微信公众号</span>
                 </div>
-                <p className="text-white/80">Reflections on understanding and navigating life</p>
+                <p className="text-gray-300">Reflections on understanding and navigating life</p>
                 {/* QR Code - initially hidden, shows on hover */}
 {/*                 <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
                   <img src="/qrcode.jpg" alt="WeChat QR Code" className="w-32 h-32" />

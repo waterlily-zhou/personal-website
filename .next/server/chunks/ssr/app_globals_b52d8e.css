@@ -723,12 +723,8 @@ img, video {
   padding-right: 20%;
 }
 
-.pt-12 {
-  padding-top: 3rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
+.pt-28 {
+  padding-top: 7rem;
 }
 
 .pt-4 {
@@ -737,14 +733,6 @@ img, video {
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.pt-24 {
-  padding-top: 6rem;
-}
-
-.pt-28 {
-  padding-top: 7rem;
 }
 
 .text-right {
@@ -769,6 +757,11 @@ img, video {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
