@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ConstellationScene from "./components/ConstellationScene";
+import Image from 'next/image';
 
 export default function Home() {
   const circleRef = useRef(null);
@@ -251,9 +252,11 @@ export default function Home() {
               About<br />Me
             </h1>
           <div className="relative h-24">
-            <img 
+            <Image 
               src="/blueStar.svg" 
               alt="Decorative star"
+              width={96}
+              height={96}
               className="w-full h-full"
               style={{ 
                 filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
@@ -331,9 +334,11 @@ export default function Home() {
             Projects &<br />Writings 
           </h1>
           <div className="relative hidden md:block">
-            <img 
+            <Image 
               src="/orangeStar.svg" 
               alt="Decorative star"
+              width={96}
+              height={96}
               className="w-full h-full"
               style={{ filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))' }}
             />
@@ -504,9 +509,15 @@ export default function Home() {
                 </div>
                 <p className="text-gray-300">Reflections on understanding and navigating life</p>
                 {/* QR Code - initially hidden, shows on hover */}
-{/*                 <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
-                  <img src="/qrcode.jpg" alt="WeChat QR Code" className="w-32 h-32" />
-                </div> */}
+                <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
+                  <Image
+                    src="/qrcode.jpg"
+                    alt="WeChat QR Code"
+                    width={128}
+                    height={128}
+                    className="w-32 h-32"
+                  />
+                </div>
               </a>
             </div>
           </div>

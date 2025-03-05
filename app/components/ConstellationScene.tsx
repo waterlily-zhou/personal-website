@@ -42,10 +42,11 @@ interface StarProps {
   scale?: number;
   onClick?: () => void;
   isClickable?: boolean;
+  isHovered?: boolean;
+  onHover?: (isHovered: boolean) => void;
 }
 
-function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: StarProps) {
-  const [hovered, setHovered] = useState(false);
+function Star({ position, color, scale = 1, pointColor, onClick, isClickable, isHovered, onHover }: StarProps) {
   const innerRef = useRef<Mesh>(null);
   
   // Add breathing animation
@@ -53,7 +54,7 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
     if (innerRef.current) {
       const t = state.clock.getElapsedTime();
       // Create a smooth breathing effect using sin wave
-      const breathingScale = 1 + Math.sin(t * 2) * 0.1; // Adjust speed (2) and intensity (0.1) here
+      const breathingScale = 1 + Math.sin(t * 2) * 0.1;
       innerRef.current.scale.x = breathingScale;
       innerRef.current.scale.y = breathingScale;
     }
@@ -103,14 +104,14 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
           onPointerOver={(e) => {
             e.stopPropagation();
             if (isClickable) {
-              setHovered(true);
+              onHover?.(true);
               document.body.style.cursor = 'pointer';
             }
           }}
           onPointerOut={(e) => {
             e.stopPropagation();
             if (isClickable) {
-              setHovered(false);
+              onHover?.(false);
               document.body.style.cursor = 'auto';
             }
           }}
@@ -127,7 +128,7 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
           <meshBasicMaterial 
             color={pointColor} 
             transparent 
-            opacity={hovered ? 1 : 0.8} 
+            opacity={isHovered ? 1 : 0.8} 
             depthWrite={false} 
           />
         </mesh>
@@ -138,7 +139,7 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
           {/* @ts-expect-error Custom material */}
           <starMaterial 
             color={hexToRgb(color)} 
-            opacity={hovered ? 1.0 : 0.8} 
+            opacity={isHovered ? 1.0 : 0.8} 
             transparent 
             depthWrite={false} 
           />
@@ -149,6 +150,8 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable }: 
 }
 
 export default function ConstellationScene() {
+  const [hoveredStar, setHoveredStar] = useState<string | null>(null);
+
   // Define star positions for Andromeda's six key stars
   const starPositions = {
     alpheratz: { 
@@ -244,35 +247,22 @@ export default function ConstellationScene() {
             color={color}
             pointColor={pointColor}
             scale={scale}
+            isClickable={name === 'mirach' || name === 'alpheratz'}
+            isHovered={hoveredStar === name}
+            onHover={(isHovered) => setHoveredStar(isHovered ? name : null)}
             onClick={name === 'mirach' ? 
               () => {
                 const aboutSection = document.querySelector('.about-section');
                 if (aboutSection) {
-                  const rect = aboutSection.getBoundingClientRect();
-                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                  const targetPosition = scrollTop + rect.top - 50; // 50px offset from top
-                  window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                  });
+                  aboutSection.scrollIntoView({ behavior: 'smooth' });
                 }
-              } : 
-              name === 'alpheratz' ? 
+              } : name === 'alpheratz' ?
               () => {
-                const projectsSection = document.querySelector('#projects-section');
+                const projectsSection = document.querySelector('.projects-section');
                 if (projectsSection) {
-                  const rect = projectsSection.getBoundingClientRect();
-                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                  const targetPosition = scrollTop + rect.top - 50; // 50px offset from top
-                  window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                  });
+                  projectsSection.scrollIntoView({ behavior: 'smooth' });
                 }
-              } : 
-              undefined
-            }
-            isClickable={name === 'mirach' || name === 'alpheratz'}
+              } : undefined}
           />
           <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
             <group>
