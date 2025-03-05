@@ -204,7 +204,7 @@ export default function ConstellationScene() {
   return (
     <>
       <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
-        <p className="text-gray-300 text-sm font-light">Touch the brightest stars to navigate.</p>
+        <p className="text-gray-300 text-sm">Touch the brightest stars to navigate.</p>
       </div>
       <Canvas 
         className="absolute top-0 left-0 w-full h-full touch-pan-y"
