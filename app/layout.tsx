@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 /* import Navigation from "./components/Navigation"; */
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Waterily Zhou",
@@ -26,8 +23,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black text-white min-h-screen`}>
-        <main >
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link
+          rel="preload"
+          href="/fonts/NeueMontreal/NeueMontreal-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/NeueMontreal/NeueMontreal-Bold.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/NeueMontreal/NeueMontreal-Light.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin=""
+        />
+      </head>
+      <body className="bg-black text-white min-h-screen antialiased">
+        <main>
           {children}
         </main>
       </body>

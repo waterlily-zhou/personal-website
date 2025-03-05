@@ -204,7 +204,7 @@ export default function ConstellationScene() {
   return (
     <Canvas 
       className="absolute top-0 left-0 w-full h-full"
-      camera={{ position: [0, 0, 10], fov: 45, rotation: [-1, -1.75, 0] }}
+      camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
     >
       <OrbitControls 
         enableZoom={false}
@@ -213,6 +213,8 @@ export default function ConstellationScene() {
         autoRotate={true}
         autoRotateSpeed={-0.2}
         rotateSpeed={0.5}
+        minPolarAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 2}
       />
       
       <Stars 
@@ -267,7 +269,7 @@ export default function ConstellationScene() {
           <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
             <group>
               <Text
-                fontSize={name === 'mirach' || name === 'alpheratz' ? 0.15 : 0.09}
+                fontSize={name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09}
                 color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
                 anchorX="left"
                 anchorY="middle"

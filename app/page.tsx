@@ -208,7 +208,7 @@ export default function Home() {
         </div>
 
         {/* Vertical text on right */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-8 writing-vertical-rl text-sm text-gray-300">
+        <div className="absolute top-1/2 -translate-y-1/2 right-6 md:right-8 writing-vertical-rl text-xs md:text-sm text-gray-300">
           250萬光年之外的螺旋星系，孕育著比銀河更先進的文明。銀河與它，或彼此吞噬、或並行时空。兩者的微妙关系，如同最直接的鏡像，對望——在無數次朝聖中浮游問道。
           {/* <br /> */}
           
@@ -246,25 +246,34 @@ export default function Home() {
       
       {/* About section */}
       <section className="min-h-screen relative text-white about-section mb-80 mt-40">
-        {/* Decorative Star and Chinese Text */}
-        <div className="absolute top-8 right-8 flex flex-col items-end">
-          <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
+        {/* Header container */}
+        <div className="relative px-8">
+          {/* Title and red line */}
+          <div className="text-right md:absolute md:top-8 md:right-8">
+            <h1 className="text-3xl mb-8" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
               About<br />Me
             </h1>
-          <div className="relative h-24">
-            <Image 
-              src="/blueStar.svg" 
-              alt="Decorative star"
-              width={96}
-              height={96}
-              className="w-full h-full"
-              style={{ 
-                filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
-              }}
-            />
+            {/* Red line - mobile only */}
+            <div className="h-[1px] bg-red-700/70 mt-8 mb-16 md:hidden" />
           </div>
-          <div className="writing-vertical-rl text-gray-300 pr-4">
-            關於我的一些事…
+          
+          {/* Decorative elements - desktop only */}
+          <div className="absolute flex top-8 right-8 flex-col items-end">
+            <div className="relative h-16 md:h-24 mt-32">
+              <Image 
+                src="/blueStar.svg" 
+                alt="Decorative star"
+                width={96}
+                height={96}
+                className="w-full h-full"
+                style={{ 
+                  filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))'
+                }}
+              />
+            </div>
+            <div className="writing-vertical-rl text-gray-300 md:pr-4">
+              關於我的一些事…
+            </div>
           </div>
         </div>
 
@@ -297,8 +306,10 @@ export default function Home() {
           </div>
         </div>
 
+
         {/* Main Content */}
-        <div className="relative z-10 min-h-screen flex items-center">
+        <div className="z-10 min-h-screen flex md:items-center">
+          
           <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
             <div className="space-y-8">
               <p className="text-white leading-relaxed">
@@ -330,7 +341,7 @@ export default function Home() {
 
         {/* Decorative Star and Chinese Text */}
         <div className="absolute top-8 right-8 flex flex-col items-end">
-          <h1 className="text-3xl font-light mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
+          <h1 className="text-3xl mb-32 text-right" style={{ fontFamily: 'Jedira', letterSpacing: '0.05em' }}>
             Projects &<br />Writings 
           </h1>
           <div className="relative hidden md:block">
@@ -351,13 +362,13 @@ export default function Home() {
         {/* Main Content */}
         <div className="pt-28 px-8 md:px-14 md:max-w-[85%] relative z-20">
           {/* Red line */}
-          <div className="w-full h-[1px] bg-red-700/70 mb-16" />
+          <div className="w-full h-[1px] bg-red-700/70 mb-16 mt-8" />
 
           {/* Projects Section */}
           <div className="mb-20 flex flex-col md:flex-row md:items-start gap-8 lg:gap-16">
             {/* Half moon and project title */}
             <div className="flex items-center -space-x-10 min-w-[150px] relative z-20">
-              <h2 className="text-xl relative z-10 text-white">Projects</h2>
+              <h2 className="text-lg relative z-10 text-white font-medium">Projects</h2>
             </div>
             
             {/* Projects Cards */}
@@ -428,7 +439,7 @@ export default function Home() {
           <div className='flex flex-col md:flex-row md:items-start gap-4 md:gap-8 lg:gap-16 relative z-20'>
             {/* Half moon and writing title*/}
             <div className="flex items-center -space-x-10 min-w-[150px]">
-              <h2 className="text-xl relative z-10 text-white">Writings</h2>
+              <h2 className="text-lg relative z-10 text-white font-medium">Writings</h2>
             </div>
 
             <div className="w-full">
@@ -493,16 +504,6 @@ export default function Home() {
                   <span className="text-white transition-colors font-bold min-w-[100px]">微信公众号</span>
                 </div>
                 <p className="text-gray-300">Reflections on understanding and navigating life</p>
-                {/* QR Code - initially hidden, shows on hover */}
-                <div className="absolute right-1/4 md:left-1/3 -translate-y-[70%] md:translate-y-1/2 md:mt-6 hidden group-hover:block rounded shadow-lg">
-                  <Image
-                    src="/qrcode.jpg"
-                    alt="WeChat QR Code"
-                    width={128}
-                    height={128}
-                    className="w-32 h-32"
-                  />
-                </div>
               </a>
             </div>
           </div>

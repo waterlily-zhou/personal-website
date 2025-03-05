@@ -1,7 +1,7 @@
 {
   "pages": {
     "/page": [
-      "static/chunks/[root of the server]__33bd1d._.css",
+      "static/chunks/app_globals_73c377.css",
       "static/chunks/_65ab26._.js",
       "static/chunks/app_layout_tsx_61af54._.js",
       "static/chunks/app_4710f8._.js",
@@ -14,7 +14,7 @@
       "static/chunks/node_modules_troika-three-text_dist_troika-three-text_esm_2702bf.js",
       "static/chunks/node_modules_gsap_275234._.js",
       "static/chunks/node_modules_1c4975._.js",
-      "static/chunks/app_page_tsx_78737e._.js",
+      "static/chunks/app_page_tsx_331a43._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_523921._.js",
