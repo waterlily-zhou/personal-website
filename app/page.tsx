@@ -160,9 +160,9 @@ export default function Home() {
                   <a 
                     href="https://github.com/waterlily-zhou" 
                     className="hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+            target="_blank"
+            rel="noopener noreferrer"
+          >
                     Github
                   </a>
                 </li>
@@ -175,19 +175,19 @@ export default function Home() {
                 <a 
                     href="https://instagram.com/waterlily_zhou" 
                     className="hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+            target="_blank"
+            rel="noopener noreferrer"
+          >
                     Instagram
-                  </a>
+          </a>
                 </li>
                 <li>
-                <a 
+        <a
                     href="https://x.com/waterlily_zhou" 
                     className="hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+          target="_blank"
+          rel="noopener noreferrer"
+        >
                     X
                   </a>
                 </li>
@@ -314,16 +314,16 @@ export default function Home() {
         {/* Main Content */}
         <div className="z-10 min-h-screen flex md:items-center">
           
-          <div className="max-w-2xl mx-auto px-8 pr-[20%] md:pr-0">
+          <div className="max-w-lg mx-auto px-8 pr-[20%] md:pr-0">
             <div className="space-y-8">
-              <p className="text-white leading-relaxed">
+              <p className="text-white text-sm leading-relaxed">
                 Mel (@waterlily-zhou) is a full-stack engineer who enjoys
                 building niche and elegant apps that seamlessly solve
                 problems. Originally trained in law, she transitioned into
                 software engineering through a bootcamp and currently
                 working in Web3.
               </p>
-              <p className="text-white leading-relaxed">
+              <p className="text-white text-sm leading-relaxed">
                 In life, she has lived across multiple continents and is now
                 based in Lisbon. She practices Vipassana meditation daily
                 and connects with Chinese philosophy. This year, she
@@ -349,7 +349,7 @@ export default function Home() {
             Projects &<br />Writings 
           </h1>
           <div className="relative hidden md:block w-24 h-24">
-            <Image 
+          <Image
               src="/orangeStar.svg" 
               alt="Decorative star"
               width={96}
@@ -390,9 +390,9 @@ export default function Home() {
                   An intro page for the Uncommons Community
                   </p>
                   <div className="flex gap-2 flex-wrap">
+                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Frontend</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Next.js</span>
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Supabase</span>
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Manbox</span>
+                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Mapbox</span>
                   </div>
                 </div>
               </a>
@@ -405,6 +405,7 @@ export default function Home() {
                     Data dashboard for crypto and topic data on X
                   </p>
                   <div className="flex gap-2 flex-wrap">
+                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Full Stack</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">D3.js</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">APIFY</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">OpenAI API</span>
@@ -420,6 +421,7 @@ export default function Home() {
                     A 1-1 personal insight consultation service
                   </p>
                   <div className="flex gap-2 flex-wrap">
+                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Owner</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Smith-Waite</span>
                   </div>
                 </div>
@@ -433,8 +435,8 @@ export default function Home() {
                     TEE-based decentralized identity solutions
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">DevRel</span>
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Marketing</span>
+                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">DevRel</span>
+                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Marketing</span>
                   </div>
                 </div>
               </a>

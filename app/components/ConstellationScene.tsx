@@ -70,52 +70,54 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable, is
 
   const starPoints = [];
   const numPoints = 4;
-  const innerRadius = 0.02 * scale; // Smaller inner radius
-  const outerRadius = 0.2 * scale;  // Slightly shorter points
+  const innerRadius = isClickable ? 0.03 * scale : 0.02 * scale;
+  const outerRadius = isClickable ? 0.3 * scale : 0.2 * scale;  
   
   // Create four points at 0°, 90°, 180°, 270°
   for (let i = 0; i < numPoints; i++) {
-    const angle = i * Math.PI / 2; // Rotate by 90° each time, starting at 0°
-    const halfAngle = Math.PI / 8; // Width of each point
+    const angle = i * Math.PI / 2;
+    const halfAngle = Math.PI / 8;
     
-    // For each point, create a triangle
     starPoints.push(
-      0, 0, 0, // Center
-      Math.cos(angle - halfAngle) * innerRadius, Math.sin(angle - halfAngle) * innerRadius, 0, // Left base
-      Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius, 0, // Point tip
+      0, 0, 0,
+      Math.cos(angle - halfAngle) * innerRadius, Math.sin(angle - halfAngle) * innerRadius, 0,
+      Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius, 0,
       
-      0, 0, 0, // Center
-      Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius, 0, // Point tip
-      Math.cos(angle + halfAngle) * innerRadius, Math.sin(angle + halfAngle) * innerRadius, 0, // Right base
+      0, 0, 0,
+      Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius, 0,
+      Math.cos(angle + halfAngle) * innerRadius, Math.sin(angle + halfAngle) * innerRadius, 0,
     );
   }
 
   return (
     <group position={position}>
-      {/* Use Billboard to make the star always face camera */}
       <Billboard>
-        {/* Four-pointed star (render first) */}
-        <mesh 
-          renderOrder={1}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick?.();
-          }}
-          onPointerOver={(e) => {
-            e.stopPropagation();
-            if (isClickable) {
+        {/* Invisible touch area for clickable stars */}
+        {isClickable && (
+          <mesh
+            renderOrder={0}
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick?.();
+            }}
+            onPointerOver={(e) => {
+              e.stopPropagation();
               onHover?.(true);
               document.body.style.cursor = 'pointer';
-            }
-          }}
-          onPointerOut={(e) => {
-            e.stopPropagation();
-            if (isClickable) {
+            }}
+            onPointerOut={(e) => {
+              e.stopPropagation();
               onHover?.(false);
               document.body.style.cursor = 'auto';
-            }
-          }}
-        >
+            }}
+          >
+            <circleGeometry args={[0.6 * scale, 32]} />
+            <meshBasicMaterial transparent opacity={0} />
+          </mesh>
+        )}
+        
+        {/* Four-pointed star */}
+        <mesh renderOrder={1}>
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"
@@ -133,9 +135,9 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable, is
           />
         </mesh>
 
-        {/* Central radial gradient (render second) */}
+        {/* Central radial gradient */}
         <mesh ref={innerRef} renderOrder={2}>
-          <planeGeometry args={[0.15 * scale, 0.15 * scale]} />
+          <planeGeometry args={[isClickable ? 0.25 * scale : 0.15 * scale, isClickable ? 0.25 * scale : 0.15 * scale]} />
           {/* @ts-expect-error Custom material */}
           <starMaterial 
             color={hexToRgb(color)} 
@@ -151,6 +153,20 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable, is
 
 export default function ConstellationScene() {
   const [hoveredStar, setHoveredStar] = useState<string | null>(null);
+  const [manualRotationEnabled, setManualRotationEnabled] = useState(true);
+  const lastTapTime = useRef(0);
+
+  // Handle double tap
+  const handleDoubleTap = () => {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTapTime.current;
+    
+    if (tapLength < 500 && tapLength > 0) {
+      // Double tap detected
+      setManualRotationEnabled(!manualRotationEnabled);
+    }
+    lastTapTime.current = currentTime;
+  };
 
   // Define star positions for Andromeda's six key stars
   const starPositions = {
@@ -205,15 +221,19 @@ export default function ConstellationScene() {
     <>
       <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
         <p className="text-gray-300 text-sm">Touch the brightest stars to navigate.</p>
+        <p className="text-gray-300 text-sm mt-1 hidden [@media(hover:none)]:block">
+          Double tap to {manualRotationEnabled ? 'exit' : 'resume'} rotation
+        </p>
       </div>
       <Canvas 
         className="absolute top-0 left-0 w-full h-full touch-pan-y"
         camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
+        onDoubleClick={handleDoubleTap}
       >
         <OrbitControls 
           enableZoom={false}
           enablePan={false}
-          enableRotate={true}
+          enableRotate={manualRotationEnabled}
           autoRotate={true}
           autoRotateSpeed={-0.2}
           rotateSpeed={0.5}
@@ -301,28 +321,19 @@ export default function ConstellationScene() {
                       if (name === 'mirach' || name === 'alpheratz') {
                         e.stopPropagation();
                         document.body.style.cursor = 'pointer';
+                        setHoveredStar(name);
                       }
                     }}
                     onPointerOut={(e) => {
                       if (name === 'mirach' || name === 'alpheratz') {
                         e.stopPropagation();
                         document.body.style.cursor = 'auto';
+                        setHoveredStar(null);
                       }
                     }}
                   >
                     {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
                   </Text>
-                  {(name === 'alpheratz' || name === 'mirach') && (
-                    <Text
-                      position={[0, -0.2, 0]}
-                      fontSize={0.09}
-                      color="#666666"
-                      anchorX="left"
-                      anchorY="middle"
-                    >
-                      {name}
-                    </Text>
-                  )}
                 </group>
               </Billboard>
             </group>
