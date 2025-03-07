@@ -230,16 +230,30 @@ function ConstellationScene() {
     _s1();
     const [hoveredStar, setHoveredStar] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [manualRotationEnabled, setManualRotationEnabled] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    const lastTapTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
-    // Handle double tap
-    const handleDoubleTap = ()=>{
-        const currentTime = new Date().getTime();
-        const tapLength = currentTime - lastTapTime.current;
-        if (tapLength < 500 && tapLength > 0) {
-            // Double tap detected
-            setManualRotationEnabled(!manualRotationEnabled);
+    const touchStartTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const touchCount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const touchTimer = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
+    const handleTouch = (e)=>{
+        e.preventDefault();
+        const currentTime = Date.now();
+        if (currentTime - touchStartTime.current < 300) {
+            // Second touch within 300ms
+            touchCount.current += 1;
+            if (touchCount.current === 2) {
+                // Double tap detected
+                touchCount.current = 0;
+                clearTimeout(touchTimer.current);
+                setManualRotationEnabled(!manualRotationEnabled);
+            }
+        } else {
+            // First touch
+            touchCount.current = 1;
+            touchStartTime.current = currentTime;
+            // Reset touch count after 300ms
+            touchTimer.current = setTimeout(()=>{
+                touchCount.current = 0;
+            }, 300);
         }
-        lastTapTime.current = currentTime;
     };
     // Define star positions for Andromeda's six key stars
     const starPositions = {
@@ -313,7 +327,7 @@ function ConstellationScene() {
                         children: "Touch the brightest stars to navigate."
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 223,
+                        lineNumber: 239,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -325,17 +339,17 @@ function ConstellationScene() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 224,
+                        lineNumber: 240,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 222,
+                lineNumber: 238,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
-                className: "absolute top-0 left-0 w-full h-full touch-pan-y",
+                className: "absolute top-0 left-0 w-full h-full",
                 camera: {
                     position: [
                         0,
@@ -349,7 +363,11 @@ function ConstellationScene() {
                         0
                     ]
                 },
-                onDoubleClick: handleDoubleTap,
+                onTouchStart: handleTouch,
+                style: {
+                    touchAction: manualRotationEnabled ? 'none' : 'pan-y',
+                    pointerEvents: manualRotationEnabled ? 'auto' : 'none'
+                },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
                         enableZoom: false,
@@ -362,7 +380,7 @@ function ConstellationScene() {
                         dampingFactor: 0.05
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 233,
+                        lineNumber: 253,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Stars$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stars"], {
@@ -375,7 +393,7 @@ function ConstellationScene() {
                         speed: 1
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 244,
+                        lineNumber: 264,
                         columnNumber: 9
                     }, this),
                     lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
@@ -391,7 +409,7 @@ function ConstellationScene() {
                             depthWrite: false
                         }, index, false, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 256,
+                            lineNumber: 276,
                             columnNumber: 11
                         }, this)),
                     Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>{
@@ -435,7 +453,7 @@ function ConstellationScene() {
                                     onClick: handleNavigation
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 299,
+                                    lineNumber: 319,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
@@ -471,23 +489,23 @@ function ConstellationScene() {
                                             children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 331,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 310,
+                                        lineNumber: 330,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 309,
+                                    lineNumber: 329,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 298,
+                            lineNumber: 318,
                             columnNumber: 13
                         }, this);
                     }),
@@ -495,7 +513,7 @@ function ConstellationScene() {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 344,
+                        lineNumber: 364,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -507,19 +525,19 @@ function ConstellationScene() {
                         intensity: 0.5
                     }, void 0, false, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 346,
+                        lineNumber: 366,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 228,
+                lineNumber: 244,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s1(ConstellationScene, "Ft48+N1z7oRmC1b0d1kz7fQ3vx4=");
+_s1(ConstellationScene, "PUiVRlMNQ6wflknnkfM0idOR4KQ=");
 _c1 = ConstellationScene;
 var _c, _c1;
 __turbopack_refresh__.register(_c, "Star");

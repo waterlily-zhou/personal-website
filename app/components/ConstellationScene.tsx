@@ -154,18 +154,34 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable, is
 export default function ConstellationScene() {
   const [hoveredStar, setHoveredStar] = useState<string | null>(null);
   const [manualRotationEnabled, setManualRotationEnabled] = useState(true);
-  const lastTapTime = useRef(0);
+  const touchStartTime = useRef(0);
+  const touchCount = useRef(0);
+  const touchTimer = useRef<NodeJS.Timeout>();
 
-  // Handle double tap
-  const handleDoubleTap = () => {
-    const currentTime = new Date().getTime();
-    const tapLength = currentTime - lastTapTime.current;
+  const handleTouch = (e: React.TouchEvent) => {
+    e.preventDefault();
+    const currentTime = Date.now();
     
-    if (tapLength < 500 && tapLength > 0) {
-      // Double tap detected
-      setManualRotationEnabled(!manualRotationEnabled);
+    if (currentTime - touchStartTime.current < 300) {
+      // Second touch within 300ms
+      touchCount.current += 1;
+      
+      if (touchCount.current === 2) {
+        // Double tap detected
+        touchCount.current = 0;
+        clearTimeout(touchTimer.current);
+        setManualRotationEnabled(!manualRotationEnabled);
+      }
+    } else {
+      // First touch
+      touchCount.current = 1;
+      touchStartTime.current = currentTime;
+      
+      // Reset touch count after 300ms
+      touchTimer.current = setTimeout(() => {
+        touchCount.current = 0;
+      }, 300);
     }
-    lastTapTime.current = currentTime;
   };
 
   // Define star positions for Andromeda's six key stars
@@ -226,9 +242,13 @@ export default function ConstellationScene() {
         </p>
       </div>
       <Canvas 
-        className="absolute top-0 left-0 w-full h-full touch-pan-y"
+        className="absolute top-0 left-0 w-full h-full"
         camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
-        onDoubleClick={handleDoubleTap}
+        onTouchStart={handleTouch}
+        style={{ 
+          touchAction: manualRotationEnabled ? 'none' : 'pan-y', 
+          pointerEvents: manualRotationEnabled ? 'auto' : 'none' 
+        }}
       >
         <OrbitControls 
           enableZoom={false}

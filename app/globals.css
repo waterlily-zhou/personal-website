@@ -94,3 +94,7 @@ body {
 .animate-breathe {
   animation: breathe 5s ease-in-out infinite;
 }
+
+.snap-mandatory {
+  scroll-snap-type: y proximity;
+}
