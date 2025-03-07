@@ -230,31 +230,74 @@ function ConstellationScene() {
     _s1();
     const [hoveredStar, setHoveredStar] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [manualRotationEnabled, setManualRotationEnabled] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    const touchStartTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
-    const touchCount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
-    const touchTimer = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
-    const handleTouch = (e)=>{
-        e.preventDefault();
-        const currentTime = Date.now();
-        if (currentTime - touchStartTime.current < 300) {
-            // Second touch within 300ms
-            touchCount.current += 1;
-            if (touchCount.current === 2) {
-                // Double tap detected
-                touchCount.current = 0;
-                clearTimeout(touchTimer.current);
-                setManualRotationEnabled(!manualRotationEnabled);
+    const lastTapTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const canvasRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    // Separate state for touch interaction
+    const [touchInteractionEnabled, setTouchInteractionEnabled] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const sectionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const lastScrollY = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    // Setup intersection observer for auto-scroll
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ConstellationScene.useEffect": ()=>{
+            const observer = new IntersectionObserver({
+                "ConstellationScene.useEffect": (entries)=>{
+                    entries.forEach({
+                        "ConstellationScene.useEffect": (entry)=>{
+                            const scrollingDown = window.scrollY > lastScrollY.current;
+                            lastScrollY.current = window.scrollY;
+                            // Only auto-scroll when scrolling down and section is partially visible
+                            if (entry.isIntersecting && scrollingDown) {
+                                // Smoothly scroll the section into full view
+                                const targetY = entry.target.getBoundingClientRect().top + window.scrollY - 100; // Adjust 100px from top
+                                window.scrollTo({
+                                    top: targetY,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }["ConstellationScene.useEffect"]);
+                }
+            }["ConstellationScene.useEffect"], {
+                threshold: [
+                    0.2
+                ],
+                rootMargin: '-20px 0px' // Smaller margin to prevent early triggering
+            });
+            if (sectionRef.current) {
+                observer.observe(sectionRef.current);
             }
+            return ({
+                "ConstellationScene.useEffect": ()=>observer.disconnect()
+            })["ConstellationScene.useEffect"];
+        }
+    }["ConstellationScene.useEffect"], []);
+    const handleTouch = (e)=>{
+        const now = Date.now();
+        const timeSinceLastTap = now - lastTapTime.current;
+        if (timeSinceLastTap < 300) {
+            e.preventDefault();
+            e.stopPropagation();
+            setManualRotationEnabled(!manualRotationEnabled);
+            setTouchInteractionEnabled(manualRotationEnabled);
         } else {
-            // First touch
-            touchCount.current = 1;
-            touchStartTime.current = currentTime;
-            // Reset touch count after 300ms
-            touchTimer.current = setTimeout(()=>{
-                touchCount.current = 0;
-            }, 300);
+            lastTapTime.current = now;
         }
     };
+    // Add touch event listeners directly to canvas
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ConstellationScene.useEffect": ()=>{
+            document.body.addEventListener('touchstart', handleTouch, {
+                passive: false
+            });
+            return ({
+                "ConstellationScene.useEffect": ()=>{
+                    document.body.removeEventListener('touchstart', handleTouch);
+                }
+            })["ConstellationScene.useEffect"];
+        }
+    }["ConstellationScene.useEffect"], [
+        manualRotationEnabled
+    ]);
     // Define star positions for Andromeda's six key stars
     const starPositions = {
         alpheratz: {
@@ -318,226 +361,219 @@ function ConstellationScene() {
         ]
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-4 left-0 w-full text-center z-10 pointer-events-none",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-gray-300 text-sm",
-                        children: "Touch the brightest stars to navigate."
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 239,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-gray-300 text-sm mt-1 hidden [@media(hover:none)]:block",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            ref: sectionRef,
+            className: "h-screen w-full",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "absolute left-0 w-full text-center z-10 pointer-events-none",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-gray-300 text-sm hidden [@media(hover:none)]:block",
                         children: [
-                            "Double tap to ",
-                            manualRotationEnabled ? 'exit' : 'resume',
-                            " rotation"
+                            "DOUBLE TAP TO ",
+                            manualRotationEnabled ? 'EXIT' : 'RESUME',
+                            " FREE ROTATE."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 240,
-                        columnNumber: 9
+                        lineNumber: 273,
+                        columnNumber: 11
                     }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 238,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
-                className: "absolute top-0 left-0 w-full h-full",
-                camera: {
-                    position: [
-                        0,
-                        0,
-                        10
-                    ],
-                    fov: 45,
-                    rotation: [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                onTouchStart: handleTouch,
-                style: {
-                    touchAction: manualRotationEnabled ? 'none' : 'pan-y',
-                    pointerEvents: manualRotationEnabled ? 'auto' : 'none'
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
-                        enableZoom: false,
-                        enablePan: false,
-                        enableRotate: manualRotationEnabled,
-                        autoRotate: true,
-                        autoRotateSpeed: -0.2,
-                        rotateSpeed: 0.5,
-                        enableDamping: true,
-                        dampingFactor: 0.05
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 253,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Stars$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stars"], {
-                        radius: 100,
-                        depth: 50,
-                        count: 1000,
-                        factor: 4,
-                        saturation: 0,
-                        fade: true,
-                        speed: 1
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 264,
-                        columnNumber: 9
-                    }, this),
-                    lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
-                            points: [
-                                start,
-                                end
-                            ],
-                            color: "red",
-                            lineWidth: 1.5,
-                            opacity: 0.5,
-                            transparent: true,
-                            renderOrder: 0,
-                            depthWrite: false
-                        }, index, false, {
+                }, void 0, false, {
+                    fileName: "[project]/app/components/ConstellationScene.tsx",
+                    lineNumber: 272,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
+                    ref: canvasRef,
+                    className: "absolute top-0 left-0 w-full h-full",
+                    camera: {
+                        position: [
+                            0,
+                            0,
+                            10
+                        ],
+                        fov: 45
+                    },
+                    style: {
+                        touchAction: touchInteractionEnabled ? 'pan-y' : 'none',
+                        pointerEvents: 'auto'
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
+                            enableZoom: false,
+                            enablePan: false,
+                            enableRotate: manualRotationEnabled,
+                            autoRotate: true,
+                            autoRotateSpeed: -0.2,
+                            rotateSpeed: 0.5,
+                            enableDamping: true,
+                            dampingFactor: 0.05
+                        }, void 0, false, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 276,
+                            lineNumber: 286,
                             columnNumber: 11
-                        }, this)),
-                    Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>{
-                        // Define the navigation function
-                        const handleNavigation = ()=>{
-                            if (name === 'mirach') {
-                                const aboutSection = document.querySelector('.about-section');
-                                if (aboutSection) {
-                                    const rect = aboutSection.getBoundingClientRect();
-                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                    const targetPosition = scrollTop + rect.top - 50;
-                                    window.scrollTo({
-                                        top: targetPosition,
-                                        behavior: 'smooth'
-                                    });
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Stars$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Stars"], {
+                            radius: 100,
+                            depth: 50,
+                            count: 1000,
+                            factor: 4,
+                            saturation: 0,
+                            fade: true,
+                            speed: 1
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/ConstellationScene.tsx",
+                            lineNumber: 297,
+                            columnNumber: 11
+                        }, this),
+                        lines.map(([start, end], index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Line$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Line"], {
+                                points: [
+                                    start,
+                                    end
+                                ],
+                                color: "red",
+                                lineWidth: 1.5,
+                                opacity: 0.5,
+                                transparent: true,
+                                renderOrder: 0,
+                                depthWrite: false
+                            }, index, false, {
+                                fileName: "[project]/app/components/ConstellationScene.tsx",
+                                lineNumber: 309,
+                                columnNumber: 13
+                            }, this)),
+                        Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index)=>{
+                            // Define the navigation function
+                            const handleNavigation = ()=>{
+                                if (name === 'mirach') {
+                                    const aboutSection = document.querySelector('.about-section');
+                                    if (aboutSection) {
+                                        const rect = aboutSection.getBoundingClientRect();
+                                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                        const targetPosition = scrollTop + rect.top - 50;
+                                        window.scrollTo({
+                                            top: targetPosition,
+                                            behavior: 'smooth'
+                                        });
+                                    }
+                                } else if (name === 'alpheratz') {
+                                    const projectsSection = document.querySelector('.projects-section');
+                                    if (projectsSection) {
+                                        const rect = projectsSection.getBoundingClientRect();
+                                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                        const targetPosition = scrollTop + rect.top - 50;
+                                        window.scrollTo({
+                                            top: targetPosition,
+                                            behavior: 'smooth'
+                                        });
+                                    }
                                 }
-                            } else if (name === 'alpheratz') {
-                                const projectsSection = document.querySelector('.projects-section');
-                                if (projectsSection) {
-                                    const rect = projectsSection.getBoundingClientRect();
-                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                                    const targetPosition = scrollTop + rect.top - 50;
-                                    window.scrollTo({
-                                        top: targetPosition,
-                                        behavior: 'smooth'
-                                    });
-                                }
-                            }
-                        };
-                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
-                            renderOrder: 3,
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
-                                    position: pos,
-                                    color: color,
-                                    pointColor: pointColor,
-                                    scale: scale,
-                                    isClickable: name === 'mirach' || name === 'alpheratz',
-                                    isHovered: hoveredStar === name,
-                                    onHover: (isHovered)=>setHoveredStar(isHovered ? name : null),
-                                    onClick: handleNavigation
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 319,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
-                                    position: [
-                                        pos.x + 0.2,
-                                        pos.y + 0.2,
-                                        pos.z
-                                    ],
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
-                                            fontSize: name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09,
-                                            color: name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666',
-                                            anchorX: "left",
-                                            anchorY: "middle",
-                                            onClick: (e)=>{
-                                                e.stopPropagation();
-                                                handleNavigation();
-                                            },
-                                            onPointerOver: (e)=>{
-                                                if (name === 'mirach' || name === 'alpheratz') {
+                            };
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
+                                renderOrder: 3,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Star, {
+                                        position: pos,
+                                        color: color,
+                                        pointColor: pointColor,
+                                        scale: scale,
+                                        isClickable: name === 'mirach' || name === 'alpheratz',
+                                        isHovered: hoveredStar === name,
+                                        onHover: (isHovered)=>setHoveredStar(isHovered ? name : null),
+                                        onClick: handleNavigation
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/ConstellationScene.tsx",
+                                        lineNumber: 352,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Billboard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Billboard"], {
+                                        position: [
+                                            pos.x + 0.2,
+                                            pos.y + 0.2,
+                                            pos.z
+                                        ],
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+                                                fontSize: name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09,
+                                                color: name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666',
+                                                anchorX: "left",
+                                                anchorY: "middle",
+                                                onClick: (e)=>{
                                                     e.stopPropagation();
-                                                    document.body.style.cursor = 'pointer';
-                                                    setHoveredStar(name);
-                                                }
-                                            },
-                                            onPointerOut: (e)=>{
-                                                if (name === 'mirach' || name === 'alpheratz') {
-                                                    e.stopPropagation();
-                                                    document.body.style.cursor = 'auto';
-                                                    setHoveredStar(null);
-                                                }
-                                            },
-                                            children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
+                                                    handleNavigation();
+                                                },
+                                                onPointerOver: (e)=>{
+                                                    if (name === 'mirach' || name === 'alpheratz') {
+                                                        e.stopPropagation();
+                                                        document.body.style.cursor = 'pointer';
+                                                        setHoveredStar(name);
+                                                    }
+                                                },
+                                                onPointerOut: (e)=>{
+                                                    if (name === 'mirach' || name === 'alpheratz') {
+                                                        e.stopPropagation();
+                                                        document.body.style.cursor = 'auto';
+                                                        setHoveredStar(null);
+                                                    }
+                                                },
+                                                children: name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ConstellationScene.tsx",
+                                                lineNumber: 364,
+                                                columnNumber: 21
+                                            }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                                            lineNumber: 331,
+                                            lineNumber: 363,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/ConstellationScene.tsx",
-                                        lineNumber: 330,
+                                        lineNumber: 362,
                                         columnNumber: 17
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/ConstellationScene.tsx",
-                                    lineNumber: 329,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, index, true, {
+                                ]
+                            }, index, true, {
+                                fileName: "[project]/app/components/ConstellationScene.tsx",
+                                lineNumber: 351,
+                                columnNumber: 15
+                            }, this);
+                        }),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
+                            intensity: 0.5
+                        }, void 0, false, {
                             fileName: "[project]/app/components/ConstellationScene.tsx",
-                            lineNumber: 318,
-                            columnNumber: 13
-                        }, this);
-                    }),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
-                        intensity: 0.5
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 364,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
-                        position: [
-                            5,
-                            5,
-                            5
-                        ],
-                        intensity: 0.5
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ConstellationScene.tsx",
-                        lineNumber: 366,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/ConstellationScene.tsx",
-                lineNumber: 244,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true);
+                            lineNumber: 397,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
+                            position: [
+                                5,
+                                5,
+                                5
+                            ],
+                            intensity: 0.5
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/ConstellationScene.tsx",
+                            lineNumber: 399,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/ConstellationScene.tsx",
+                    lineNumber: 277,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/components/ConstellationScene.tsx",
+            lineNumber: 271,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
 }
-_s1(ConstellationScene, "PUiVRlMNQ6wflknnkfM0idOR4KQ=");
+_s1(ConstellationScene, "LbupP3u+/AnptmIDTxI+CcC4WNk=");
 _c1 = ConstellationScene;
 var _c, _c1;
 __turbopack_refresh__.register(_c, "Star");
@@ -943,9 +979,12 @@ function Home() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         ref: constellationRef,
                         className: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[100vh]",
+                        style: {
+                            pointerEvents: 'none'
+                        },
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ConstellationScene$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 243,
+                            lineNumber: 246,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
@@ -978,27 +1017,27 @@ function Home() {
                                             "About",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 254,
+                                                lineNumber: 257,
                                                 columnNumber: 20
                                             }, this),
                                             "Me"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 256,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-[1px] bg-red-700/70 mt-8 mb-16 md:hidden"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 257,
+                                        lineNumber: 260,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 252,
+                                lineNumber: 255,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1021,12 +1060,12 @@ function Home() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 266,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 265,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1034,19 +1073,19 @@ function Home() {
                                         children: "關於我的一些事…"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 278,
+                                        lineNumber: 281,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 261,
+                                lineNumber: 264,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 250,
+                        lineNumber: 253,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1064,7 +1103,7 @@ function Home() {
                                         }
                                     }, i, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 295,
                                         columnNumber: 15
                                     }, this)),
                                 [
@@ -1082,18 +1121,18 @@ function Home() {
                                         }
                                     }, i, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 300,
+                                        lineNumber: 303,
                                         columnNumber: 15
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 286,
+                            lineNumber: 289,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 285,
+                        lineNumber: 288,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1108,7 +1147,7 @@ function Home() {
                                         children: "Mel (@waterlily-zhou) is a full-stack engineer who enjoys building niche and elegant apps that seamlessly solve problems. Originally trained in law, she transitioned into software engineering through a bootcamp and currently working in Web3."
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 322,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1116,29 +1155,29 @@ function Home() {
                                         children: 'In life, she has lived across multiple continents and is now based in Lisbon. She practices Vipassana meditation daily and connects with Chinese philosophy. This year, she follows the motto "潜龙勿用"—approaching work with equanimity and a learner\'s attitude.'
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 326,
+                                        lineNumber: 329,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 318,
+                                lineNumber: 321,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
-                            lineNumber: 317,
+                            lineNumber: 320,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 315,
+                        lineNumber: 318,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 248,
+                lineNumber: 251,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1150,12 +1189,12 @@ function Home() {
                     className: "absolute inset-0 bg-gradient-to-b from-black via-blue-600/25 to-black"
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 340,
+                    lineNumber: 343,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 339,
+                lineNumber: 342,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1175,14 +1214,14 @@ function Home() {
                                     "Projects &",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 349,
+                                        lineNumber: 352,
                                         columnNumber: 23
                                     }, this),
                                     "Writings"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 348,
+                                lineNumber: 351,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1201,12 +1240,12 @@ function Home() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 352,
+                                    lineNumber: 355,
                                     columnNumber: 11
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 351,
+                                lineNumber: 354,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1214,13 +1253,13 @@ function Home() {
                                 children: "過往項目與文章"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 366,
+                                lineNumber: 369,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 347,
+                        lineNumber: 350,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1230,7 +1269,7 @@ function Home() {
                                 className: "w-full h-[1px] bg-red-700/70 mb-16 mt-8"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 374,
+                                lineNumber: 377,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1243,12 +1282,12 @@ function Home() {
                                             children: "Projects"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 380,
+                                            lineNumber: 383,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 379,
+                                        lineNumber: 382,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1266,7 +1305,7 @@ function Home() {
                                                             children: "Uncommons Website"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 388,
+                                                            lineNumber: 391,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1274,7 +1313,7 @@ function Home() {
                                                             children: "An intro page for the Uncommons Community"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 389,
+                                                            lineNumber: 392,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1285,7 +1324,7 @@ function Home() {
                                                                     children: "Frontend"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 393,
+                                                                    lineNumber: 396,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1293,7 +1332,7 @@ function Home() {
                                                                     children: "Next.js"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 394,
+                                                                    lineNumber: 397,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1301,24 +1340,24 @@ function Home() {
                                                                     children: "Mapbox"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 395,
+                                                                    lineNumber: 398,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 392,
+                                                            lineNumber: 395,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 387,
+                                                    lineNumber: 390,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 386,
+                                                lineNumber: 389,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1333,7 +1372,7 @@ function Home() {
                                                             children: "Birdy.ai"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 403,
+                                                            lineNumber: 406,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1341,7 +1380,7 @@ function Home() {
                                                             children: "Data dashboard for crypto and topic data on X"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 404,
+                                                            lineNumber: 407,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1352,7 +1391,7 @@ function Home() {
                                                                     children: "Full Stack"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 408,
+                                                                    lineNumber: 411,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1360,7 +1399,7 @@ function Home() {
                                                                     children: "D3.js"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 409,
+                                                                    lineNumber: 412,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1368,7 +1407,7 @@ function Home() {
                                                                     children: "APIFY"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 410,
+                                                                    lineNumber: 413,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1376,24 +1415,24 @@ function Home() {
                                                                     children: "OpenAI API"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 411,
+                                                                    lineNumber: 414,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 407,
+                                                            lineNumber: 410,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 402,
+                                                    lineNumber: 405,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 401,
+                                                lineNumber: 404,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1408,7 +1447,7 @@ function Home() {
                                                             children: "Mel's Tarot House"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 419,
+                                                            lineNumber: 422,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1416,7 +1455,7 @@ function Home() {
                                                             children: "A 1-1 personal insight consultation service"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 420,
+                                                            lineNumber: 423,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1427,7 +1466,7 @@ function Home() {
                                                                     children: "Owner"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 424,
+                                                                    lineNumber: 427,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1435,24 +1474,24 @@ function Home() {
                                                                     children: "Smith-Waite"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 425,
+                                                                    lineNumber: 428,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 423,
+                                                            lineNumber: 426,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 418,
+                                                    lineNumber: 421,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 417,
+                                                lineNumber: 420,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1467,7 +1506,7 @@ function Home() {
                                                             children: "Litentry (employed)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 433,
+                                                            lineNumber: 436,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1475,7 +1514,7 @@ function Home() {
                                                             children: "TEE-based decentralized identity solutions"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 434,
+                                                            lineNumber: 437,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1486,7 +1525,7 @@ function Home() {
                                                                     children: "DevRel"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 438,
+                                                                    lineNumber: 441,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1494,43 +1533,43 @@ function Home() {
                                                                     children: "Marketing"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 439,
+                                                                    lineNumber: 442,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 437,
+                                                            lineNumber: 440,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 432,
+                                                    lineNumber: 435,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 431,
+                                                lineNumber: 434,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 384,
+                                        lineNumber: 387,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 377,
+                                lineNumber: 380,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-full h-[1px] bg-red-700/70 mb-16"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 447,
+                                lineNumber: 450,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1543,12 +1582,12 @@ function Home() {
                                             children: "Writings"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 453,
+                                            lineNumber: 456,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 455,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1576,12 +1615,12 @@ function Home() {
                                                                     strokeLinejoin: "round"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 466,
+                                                                    lineNumber: 469,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 459,
+                                                                lineNumber: 462,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1589,13 +1628,13 @@ function Home() {
                                                                 children: "Medium"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 473,
+                                                                lineNumber: 476,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 458,
+                                                        lineNumber: 461,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1603,13 +1642,13 @@ function Home() {
                                                         children: "Articles on identity and privacy technologies"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 475,
+                                                        lineNumber: 478,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 457,
+                                                lineNumber: 460,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1634,12 +1673,12 @@ function Home() {
                                                                     strokeLinejoin: "round"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 487,
+                                                                    lineNumber: 490,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 480,
+                                                                lineNumber: 483,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1647,13 +1686,13 @@ function Home() {
                                                                 children: "Foresight News"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 494,
+                                                                lineNumber: 497,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 479,
+                                                        lineNumber: 482,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1661,13 +1700,13 @@ function Home() {
                                                         children: "Opinions and analysis on the social impact of Web3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 496,
+                                                        lineNumber: 499,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 478,
+                                                lineNumber: 481,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1692,12 +1731,12 @@ function Home() {
                                                                     strokeLinejoin: "round"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 508,
+                                                                    lineNumber: 511,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 501,
+                                                                lineNumber: 504,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1705,13 +1744,13 @@ function Home() {
                                                                 children: "微信公众号"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 515,
+                                                                lineNumber: 518,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 500,
+                                                        lineNumber: 503,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1719,44 +1758,44 @@ function Home() {
                                                         children: "Reflections on understanding and navigating life"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 517,
+                                                        lineNumber: 520,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 499,
+                                                lineNumber: 502,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 456,
+                                        lineNumber: 459,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 450,
+                                lineNumber: 453,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "md:hidden h-24"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.tsx",
-                                lineNumber: 521,
+                                lineNumber: 524,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.tsx",
-                        lineNumber: 372,
+                        lineNumber: 375,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.tsx",
-                lineNumber: 344,
+                lineNumber: 347,
                 columnNumber: 7
             }, this)
         ]

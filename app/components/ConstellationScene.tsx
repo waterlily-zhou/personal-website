@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Stars, Text, shaderMaterial, Billboard } from "@react-three/drei";
 import { Vector3, Mesh } from "three";
 import { extend } from '@react-three/fiber';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 
 // Custom shader for radial gradient
@@ -154,35 +154,68 @@ function Star({ position, color, scale = 1, pointColor, onClick, isClickable, is
 export default function ConstellationScene() {
   const [hoveredStar, setHoveredStar] = useState<string | null>(null);
   const [manualRotationEnabled, setManualRotationEnabled] = useState(true);
-  const touchStartTime = useRef(0);
-  const touchCount = useRef(0);
-  const touchTimer = useRef<NodeJS.Timeout>();
+  const lastTapTime = useRef(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  // Separate state for touch interaction
+  const [touchInteractionEnabled, setTouchInteractionEnabled] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
 
-  const handleTouch = (e: React.TouchEvent) => {
-    e.preventDefault();
-    const currentTime = Date.now();
-    
-    if (currentTime - touchStartTime.current < 300) {
-      // Second touch within 300ms
-      touchCount.current += 1;
-      
-      if (touchCount.current === 2) {
-        // Double tap detected
-        touchCount.current = 0;
-        clearTimeout(touchTimer.current);
-        setManualRotationEnabled(!manualRotationEnabled);
+  // Setup intersection observer for auto-scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const scrollingDown = window.scrollY > lastScrollY.current;
+          lastScrollY.current = window.scrollY;
+          
+          // Only auto-scroll when scrolling down and section is partially visible
+          if (entry.isIntersecting && scrollingDown) {
+            // Smoothly scroll the section into full view
+            const targetY = entry.target.getBoundingClientRect().top + window.scrollY - 100; // Adjust 100px from top
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+          }
+        });
+      },
+      {
+        threshold: [0.2], // Trigger when 20% is visible
+        rootMargin: '-20px 0px' // Smaller margin to prevent early triggering
       }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleTouch = (e: TouchEvent) => {
+    const now = Date.now();
+    const timeSinceLastTap = now - lastTapTime.current;
+    
+    if (timeSinceLastTap < 300) {
+      e.preventDefault();
+      e.stopPropagation();
+      setManualRotationEnabled(!manualRotationEnabled);
+      setTouchInteractionEnabled(manualRotationEnabled);
     } else {
-      // First touch
-      touchCount.current = 1;
-      touchStartTime.current = currentTime;
-      
-      // Reset touch count after 300ms
-      touchTimer.current = setTimeout(() => {
-        touchCount.current = 0;
-      }, 300);
+      lastTapTime.current = now;
     }
   };
+
+  // Add touch event listeners directly to canvas
+  useEffect(() => {
+    document.body.addEventListener('touchstart', handleTouch, { passive: false });
+  
+    return () => {
+      document.body.removeEventListener('touchstart', handleTouch);
+    };
+  }, [manualRotationEnabled]);
 
   // Define star positions for Andromeda's six key stars
   const starPositions = {
@@ -235,136 +268,137 @@ export default function ConstellationScene() {
 
   return (
     <>
-      <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
-        <p className="text-gray-300 text-sm">Touch the brightest stars to navigate.</p>
-        <p className="text-gray-300 text-sm mt-1 hidden [@media(hover:none)]:block">
-          Double tap to {manualRotationEnabled ? 'exit' : 'resume'} rotation
-        </p>
-      </div>
-      <Canvas 
-        className="absolute top-0 left-0 w-full h-full"
-        camera={{ position: [0, 0, 10], fov: 45, rotation: [0, 0, 0] }}
-        onTouchStart={handleTouch}
-        style={{ 
-          touchAction: manualRotationEnabled ? 'none' : 'pan-y', 
-          pointerEvents: manualRotationEnabled ? 'auto' : 'none' 
-        }}
-      >
-        <OrbitControls 
-          enableZoom={false}
-          enablePan={false}
-          enableRotate={manualRotationEnabled}
-          autoRotate={true}
-          autoRotateSpeed={-0.2}
-          rotateSpeed={0.5}
-          enableDamping={true}
-          dampingFactor={0.05}
-        />
-        
-        <Stars 
-          radius={100} 
-          depth={50} 
-          count={1000} 
-          factor={4} 
-          saturation={0} 
-          fade 
-          speed={1} 
-        />
-        
-        {/* Draw connection lines */}
-        {lines.map(([start, end], index) => (
-          <Line 
-            key={index} 
-            points={[start, end]} 
-            color="red" 
-            lineWidth={1.5} 
-            opacity={0.5}
-            transparent
-            renderOrder={0}
-            depthWrite={false}
+      <div ref={sectionRef} className="h-screen w-full">
+        <div className="absolute left-0 w-full text-center z-10 pointer-events-none">
+          <p className="text-gray-300 text-sm hidden [@media(hover:none)]:block">
+            DOUBLE TAP TO {manualRotationEnabled ? 'EXIT' : 'RESUME'} FREE ROTATE.
+          </p>
+        </div>
+        <Canvas 
+          ref={canvasRef}
+          className="absolute top-0 left-0 w-full h-full"
+          camera={{ position: [0, 0, 10], fov: 45 }}
+          style={{ 
+            touchAction: touchInteractionEnabled ? 'pan-y' : 'none',
+            pointerEvents: 'auto'
+          }}
+        >
+          <OrbitControls 
+            enableZoom={false}
+            enablePan={false}
+            enableRotate={manualRotationEnabled}
+            autoRotate={true}
+            autoRotateSpeed={-0.2}
+            rotateSpeed={0.5}
+            enableDamping={true}
+            dampingFactor={0.05}
           />
-        ))}
-        
-        {/* Draw the stars */}
-        {Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index) => {
-          // Define the navigation function
-          const handleNavigation = () => {
-            if (name === 'mirach') {
-              const aboutSection = document.querySelector('.about-section');
-              if (aboutSection) {
-                const rect = aboutSection.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const targetPosition = scrollTop + rect.top - 50;
-                window.scrollTo({
-                  top: targetPosition,
-                  behavior: 'smooth'
-                });
+          
+          <Stars 
+            radius={100} 
+            depth={50} 
+            count={1000} 
+            factor={4} 
+            saturation={0} 
+            fade 
+            speed={1} 
+          />
+          
+          {/* Draw connection lines */}
+          {lines.map(([start, end], index) => (
+            <Line 
+              key={index} 
+              points={[start, end]} 
+              color="red" 
+              lineWidth={1.5} 
+              opacity={0.5}
+              transparent
+              renderOrder={0}
+              depthWrite={false}
+            />
+          ))}
+          
+          {/* Draw the stars */}
+          {Object.entries(starPositions).map(([name, { pos, color, pointColor, scale }], index) => {
+            // Define the navigation function
+            const handleNavigation = () => {
+              if (name === 'mirach') {
+                const aboutSection = document.querySelector('.about-section');
+                if (aboutSection) {
+                  const rect = aboutSection.getBoundingClientRect();
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const targetPosition = scrollTop + rect.top - 50;
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              } else if (name === 'alpheratz') {
+                const projectsSection = document.querySelector('.projects-section');
+                if (projectsSection) {
+                  const rect = projectsSection.getBoundingClientRect();
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const targetPosition = scrollTop + rect.top - 50;
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  });
+                }
               }
-            } else if (name === 'alpheratz') {
-              const projectsSection = document.querySelector('.projects-section');
-              if (projectsSection) {
-                const rect = projectsSection.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const targetPosition = scrollTop + rect.top - 50;
-                window.scrollTo({
-                  top: targetPosition,
-                  behavior: 'smooth'
-                });
-              }
-            }
-          };
+            };
 
-          return (
-            <group key={index} renderOrder={3}>
-              <Star 
-                position={pos}
-                color={color}
-                pointColor={pointColor}
-                scale={scale}
-                isClickable={name === 'mirach' || name === 'alpheratz'}
-                isHovered={hoveredStar === name}
-                onHover={(isHovered) => setHoveredStar(isHovered ? name : null)}
-                onClick={handleNavigation}
-              />
-              <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
-                <group>
-                  <Text
-                    fontSize={name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09}
-                    color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
-                    anchorX="left"
-                    anchorY="middle"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleNavigation();
-                    }}
-                    onPointerOver={(e) => {
-                      if (name === 'mirach' || name === 'alpheratz') {
+            return (
+              <group key={index} renderOrder={3}>
+                <Star 
+                  position={pos}
+                  color={color}
+                  pointColor={pointColor}
+                  scale={scale}
+                  isClickable={name === 'mirach' || name === 'alpheratz'}
+                  isHovered={hoveredStar === name}
+                  onHover={(isHovered) => setHoveredStar(isHovered ? name : null)}
+                  onClick={handleNavigation}
+                />
+                <Billboard position={[pos.x + 0.2, pos.y + 0.2, pos.z]}>
+                  <group>
+                    <Text
+                      fontSize={name === 'mirach' || name === 'alpheratz' ? 0.13 : 0.09}
+                      color={name === 'mirach' || name === 'alpheratz' ? 'white' : '#666666'}
+                      anchorX="left"
+                      anchorY="middle"
+                      onClick={(e) => {
                         e.stopPropagation();
-                        document.body.style.cursor = 'pointer';
-                        setHoveredStar(name);
-                      }
-                    }}
-                    onPointerOut={(e) => {
-                      if (name === 'mirach' || name === 'alpheratz') {
-                        e.stopPropagation();
-                        document.body.style.cursor = 'auto';
-                        setHoveredStar(null);
-                      }
-                    }}
-                  >
-                    {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
-                  </Text>
-                </group>
-              </Billboard>
-            </group>
-          );
-        })}
+                        handleNavigation();
+                      }}
+                      onPointerOver={(e) => {
+                        if (name === 'mirach' || name === 'alpheratz') {
+                          e.stopPropagation();
+                          document.body.style.cursor = 'pointer';
+                          setHoveredStar(name);
+                        }
+                      }}
+                      onPointerOut={(e) => {
+                        if (name === 'mirach' || name === 'alpheratz') {
+                          e.stopPropagation();
+                          document.body.style.cursor = 'auto';
+                          setHoveredStar(null);
+                        }
+                      }}
+                    >
+                      {name === 'alpheratz' ? 'Projects & Writings' : name === 'mirach' ? 'About Me' : name}
+                    </Text>
+                  </group>
+                </Billboard>
+              </group>
+            );
+          })}
 
-        {/* Add ambient light */}
-        <ambientLight intensity={0.5} />
-        {/* Add directional light for better 3D appearance */}
-        <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      </Canvas>
+          {/* Add ambient light */}
+          <ambientLight intensity={0.5} />
+          {/* Add directional light for better 3D appearance */}
+          <directionalLight position={[5, 5, 5]} intensity={0.5} />
+        </Canvas>
+      </div>
     </>
   );
 }
