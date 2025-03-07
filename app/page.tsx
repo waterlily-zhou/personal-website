@@ -390,7 +390,7 @@ export default function Home() {
                   An intro page for the Uncommons Community
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Frontend</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Frontend</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Next.js</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Mapbox</span>
                   </div>
@@ -405,7 +405,7 @@ export default function Home() {
                     Data dashboard for crypto and topic data on X
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Full Stack</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Full Stack</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">D3.js</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">APIFY</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">OpenAI API</span>
@@ -421,7 +421,7 @@ export default function Home() {
                     A 1-1 personal insight consultation service
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Owner</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Owner</span>
                     <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Smith-Waite</span>
                   </div>
                 </div>
@@ -435,8 +435,8 @@ export default function Home() {
                     TEE-based decentralized identity solutions
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">DevRel</span>
-                    <span className="text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded">Marketing</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">DevRel</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Marketing</span>
                   </div>
                 </div>
               </a>

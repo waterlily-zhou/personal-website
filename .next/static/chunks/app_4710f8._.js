@@ -1263,7 +1263,7 @@ function Home() {
                                                             className: "flex gap-2 flex-wrap",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded",
+                                                                    className: "text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded",
                                                                     children: "Frontend"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
@@ -1330,7 +1330,7 @@ function Home() {
                                                             className: "flex gap-2 flex-wrap",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded",
+                                                                    className: "text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded",
                                                                     children: "Full Stack"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
@@ -1405,7 +1405,7 @@ function Home() {
                                                             className: "flex gap-2 flex-wrap",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded",
+                                                                    className: "text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded",
                                                                     children: "Owner"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
@@ -1464,7 +1464,7 @@ function Home() {
                                                             className: "flex gap-2 flex-wrap",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded",
+                                                                    className: "text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded",
                                                                     children: "DevRel"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
@@ -1472,7 +1472,7 @@ function Home() {
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs bg-red-700/60 text-white/70 px-2 py-1 rounded",
+                                                                    className: "text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded",
                                                                     children: "Marketing"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
