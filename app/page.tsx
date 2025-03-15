@@ -147,7 +147,7 @@ export default function Home() {
             {/* Introduction */}
             <div className="space-y-2 border-b border-gray-600 pb-4 md:border-b-0 md:pb-0 md:border-r md:border-gray-600 pr-4 md:col-span-3">
               <p className="text-sm leading-relaxed text-gray-300 pr-[20%]">
-                A full-stack developer in Web3, focused on building user-friendly and scalable
+                A product engineer in Web3, focused on building user-friendly and scalable
                 applications with high functionality and elegant interface aesthetics.
               </p>
             </div>
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="max-w-lg mx-auto px-8 pr-[20%] md:pr-0">
             <div className="space-y-8">
               <p className="text-white text-sm leading-relaxed">
-                Mel (@waterlily-zhou) is a full-stack engineer who enjoys
+                Mel (@waterlily-zhou) is a product engineer who enjoys
                 building niche and elegant apps that seamlessly solve
                 problems. Originally trained in law, she transitioned into
                 software engineering through a bootcamp and currently
