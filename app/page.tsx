@@ -388,14 +388,14 @@ export default function Home() {
               {/* Uncommons Website */}
               <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
-                  <h3 className="mb-2 font-bold">Uncommons Website</h3>
+                  <h3 className="mb-2 font-bold">AA Wallet</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                  An intro page for the Uncommons Community
+                  An account abstraction wallet for the Base network
                   </p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Frontend</span>
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Next.js</span>
-                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Mapbox</span>
+                    <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Owner</span>
+                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Pimlico</span>
+                    <span className="text-xs bg-white/20 text-white/70 px-2 py-1 rounded">Safe{"{"}wallet{"}"}</span>
                   </div>
                 </div>
               </a>
