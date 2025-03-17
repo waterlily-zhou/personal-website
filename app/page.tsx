@@ -386,7 +386,7 @@ export default function Home() {
             {/* Projects Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 relative z-20">
               {/* Uncommons Website */}
-              <a href="https://unco-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/waterlily-zhou/aa-wallet" target="_blank" rel="noopener noreferrer">
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">AA Wallet</h3>
                   <p className="text-sm text-gray-300 mb-4">
