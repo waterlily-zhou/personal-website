@@ -390,7 +390,7 @@ export default function Home() {
                 <div className="border border-white/30 rounded-lg p-6 hover:border-red-700 hover:bg-red-700 transition-all duration-300">
                   <h3 className="mb-2 font-bold">Nyx Wallet</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                  An Account Abstraction wallet based on ERC-4337
+                  A secure crypto wallet with transaction analysis
                   </p>
                   <div className="flex gap-2 flex-wrap">
                     <span className="text-xs bg-red-600/40 text-white/70 px-2 py-1 rounded">Owner</span>
